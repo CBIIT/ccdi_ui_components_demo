@@ -1,0 +1,951 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+  --primary: #375C67;
+  --primary-foreground: #fafafa;
+  --secondary: #0B4E75;
+  --secondary-foreground: #fafafa;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --accent: #f5f5f5;
+  --accent-foreground: #171717;
+  --destructive: #935824;
+  --destructive-foreground: #ffffff;
+  --success: #536D70;
+  --success-foreground: #ffffff;
+  --warning: #ca8a04;
+  --warning-foreground: #ffffff;
+  --info: #2A6E93;
+  --info-foreground: #ffffff;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #a1a1a1;
+  --chart-1: #f54900;
+  --chart-2: #009689;
+  --chart-3: #104e64;
+  --chart-4: #ffb900;
+  --chart-5: #fe9a00;
+  --sidebar: #fafafa;
+  --sidebar-foreground: #0a0a0a;
+  --sidebar-primary: #171717;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #f5f5f5;
+  --sidebar-accent-foreground: #171717;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #a1a1a1;
+
+  /* Primary Font Options */
+  --font-sans: Poppins, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-serif: Merriweather, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: "Roboto Mono", "SF Mono", Monaco, "Cascadia Code", "Fira Code", Consolas, "Liberation Mono", "Courier New", monospace;
+
+ /* Secondary/Alternative Font Options */
+ --font-heading: Poppins, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+ --font-body: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --radius: 0.625rem;
+
+  --shadow-x: 0;
+  --shadow-y: 1px;
+  --shadow-blur: 3px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.1;
+  --shadow-color: oklch(0 0 0);
+  --shadow-2xs: 0 1px 3px 0px rgb(0 0 0 / 0.05);
+  --shadow-xs: 0 1px 3px 0px rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0px rgb(0 0 0 / 0.10), 0 1px 2px -1px rgb(0 0 0 / 0.10);
+  --shadow: 0 1px 3px 0px rgb(0 0 0 / 0.10), 0 1px 2px -1px rgb(0 0 0 / 0.10);
+  --shadow-md: 0 1px 3px 0px rgb(0 0 0 / 0.10), 0 2px 4px -1px rgb(0 0 0 / 0.10);
+  --shadow-lg: 0 1px 3px 0px rgb(0 0 0 / 0.10), 0 4px 6px -1px rgb(0 0 0 / 0.10);
+  --shadow-xl: 0 1px 3px 0px rgb(0 0 0 / 0.10), 0 8px 10px -1px rgb(0 0 0 / 0.10);
+  --shadow-2xl: 0 1px 3px 0px rgb(0 0 0 / 0.25);
+
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #171717;
+  --card-foreground: #fafafa;
+  --popover: #262626;
+  --popover-foreground: #fafafa;
+  --primary: #e5e5e5;
+  --primary-foreground: #171717;
+  --secondary: #262626;
+  --secondary-foreground: #fafafa;
+  --muted: #262626;
+  --muted-foreground: #a1a1a1;
+  --accent: #404040;
+  --accent-foreground: #fafafa;
+  --destructive: #ff6467;
+  --destructive-foreground: #fafafa;
+  --success: #16a34a;
+  --success-foreground: #ffffff;
+  --warning: #ca8a04;
+  --warning-foreground: #ffffff;
+  --info: #2563eb;
+  --info-foreground: #ffffff;
+  --border: #282828;
+  --input: #343434;
+  --ring: #737373;
+  --chart-1: #91c5ff;
+  --chart-2: #3a81f6;
+  --chart-3: #2563ef;
+  --chart-4: #1a4eda;
+  --chart-5: #1f3fad;
+  --sidebar: #171717;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: #1447e6;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #262626;
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: #282828;
+  --sidebar-ring: #525252;
+
+  --font-sans: Poppins, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-serif: Merriweather, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: "Roboto Mono", "SF Mono", Monaco, "Cascadia Code", "Fira Code", Consolas, "Liberation Mono", "Courier New", monospace;
+
+ /* Secondary/Alternative Font Options */
+ --font-heading: Poppins, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+ --font-body: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --radius: 0.625rem;
+
+  --shadow-x: 0;
+  --shadow-y: 1px;
+  --shadow-blur: 3px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.1;
+  --shadow-color: oklch(0 0 0);
+  --shadow-2xs: 0 1px 3px 0px rgb(0 0 0 / 0.05);
+  --shadow-xs: 0 1px 3px 0px rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0px rgb(0 0 0 / 0.10), 0 1px 2px -1px rgb(0 0 0 / 0.10);
+  --shadow: 0 1px 3px 0px rgb(0 0 0 / 0.10), 0 1px 2px -1px rgb(0 0 0 / 0.10);
+  --shadow-md: 0 1px 3px 0px rgb(0 0 0 / 0.10), 0 2px 4px -1px rgb(0 0 0 / 0.10);
+  --shadow-lg: 0 1px 3px 0px rgb(0 0 0 / 0.10), 0 4px 6px -1px rgb(0 0 0 / 0.10);
+  --shadow-xl: 0 1px 3px 0px rgb(0 0 0 / 0.10), 0 8px 10px -1px rgb(0 0 0 / 0.10);
+  --shadow-2xl: 0 1px 3px 0px rgb(0 0 0 / 0.25);
+}
+
+/* Tailwind CSS v4 Configuration */
+@theme inline {
+
+  /* Theme Variables for Tailwind CSS v4 */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Font Families */
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  
+  /* Theme Radius with normalization support */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Theme Shadow with normalization support */
+  --shadow-x: var(--shadow-x);
+  --shadow-y: var(--shadow-y);
+  --shadow-blur: var(--shadow-blur);
+  --shadow-spread: var(--shadow-spread);
+  --shadow-opacity: var(--shadow-opacity);
+  --shadow-color: var(--shadow-color);
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+
+  /* Theme Tracking with normalization support */
+  --tracking-normal: var(--tracking-normal);
+  /* --spacing: var(--spacing); */
+
+  /* Font Size with normalization support */
+  --font-size-xs: calc(0.75rem * var(--font-normalization, 1));
+  --font-size-sm: calc(0.875rem * var(--font-normalization, 1));
+  --font-size-base: calc(1rem * var(--font-normalization, 1));
+  --font-size-lg: calc(1.125rem * var(--font-normalization, 1));
+  --font-size-xl: calc(1.25rem * var(--font-normalization, 1));
+  --font-size-2xl: calc(1.5rem * var(--font-normalization, 1));
+  --font-size-3xl: calc(1.875rem * var(--font-normalization, 1));
+  --font-size-4xl: calc(2.25rem * var(--font-normalization, 1));
+  --font-size-5xl: calc(3rem * var(--font-normalization, 1));
+  --font-size-6xl: calc(3.75rem * var(--font-normalization, 1));
+  --font-size-7xl: calc(4.5rem * var(--font-normalization, 1));
+  --font-size-8xl: calc(6rem * var(--font-normalization, 1));
+  --font-size-9xl: calc(8rem * var(--font-normalization, 1));
+
+  /* Line heights */
+  --line-height-xs: calc(1rem * var(--font-normalization, 1));
+  --line-height-sm: calc(1.25rem * var(--font-normalization, 1));
+  --line-height-base: calc(1.5rem * var(--font-normalization, 1));
+  --line-height-lg: calc(1.75rem * var(--font-normalization, 1));
+  --line-height-xl: calc(1.75rem * var(--font-normalization, 1));
+  --line-height-2xl: calc(2rem * var(--font-normalization, 1));
+  --line-height-3xl: calc(2.25rem * var(--font-normalization, 1));
+  --line-height-4xl: calc(2.5rem * var(--font-normalization, 1));
+  --line-height-5xl: calc(1 * var(--font-normalization, 1));
+  --line-height-6xl: calc(1 * var(--font-normalization, 1));
+  --line-height-7xl: calc(1 * var(--font-normalization, 1));
+  --line-height-8xl: calc(1 * var(--font-normalization, 1));
+  --line-height-9xl: calc(1 * var(--font-normalization, 1));
+
+  /* Font families */
+  --font-family-merriweather: Merriweather, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-family-public-sans: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-family-source-sans: "Source Sans 3", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-family-open-sans: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-family-roboto-mono: "Roboto Mono", "SF Mono", Monaco, "Cascadia Code", "Fira Code", Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-family-georgia: Georgia, "Times New Roman", "Liberation Serif", "Noto Serif", serif;
+  --font-family-helvetica: "Helvetica Neue", Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", "SF Pro Display", Roboto, Arial, sans-serif;
+  --font-family-tahoma: Tahoma, "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+  --font-family-verdana: Verdana, "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+  --font-family-poppins: Poppins, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  
+  --tracking-tighter: calc(var(--tracking-normal) - 0.05em);
+  --tracking-tight: calc(var(--tracking-normal) - 0.025em);
+  --tracking-normal: var(--tracking-normal);
+  --tracking-wide: calc(var(--tracking-normal) + 0.025em);
+  --tracking-wider: calc(var(--tracking-normal) + 0.05em);
+  --tracking-widest: calc(var(--tracking-normal) + 0.1em);
+
+  /* USWDS Color Palette */
+  --color-red-cool-5: #f8eff1;
+  --color-red-cool-10: #f3e1e4;
+  --color-red-cool-20: #ecbec6;
+  --color-red-cool-30: #e09aa6;
+  --color-red-cool-40: #e16b80;
+  --color-red-cool-50: #cd425b;
+  --color-red-cool-60: #9e394b;
+  --color-red-cool-70: #68363f;
+  --color-red-cool-80: #40282c;
+  --color-red-cool-90: #1e1517;
+  --color-red-cool-5v: #fff2f5;
+  --color-red-cool-10v: #f8dfe2;
+  --color-red-cool-20v: #f8b9c5;
+  --color-red-cool-30v: #fd8ba0;
+  --color-red-cool-40v: #f45d79;
+  --color-red-cool-50v: #e41d3d;
+  --color-red-cool-60v: #b21d38;
+  --color-red-cool-70v: #822133;
+  --color-red-cool-80v: #4f1c24;
+  --color-red-5: #f9eeee;
+  --color-red-10: #f8e1de;
+  --color-red-20: #f7bbb1;
+  --color-red-30: #f2938c;
+  --color-red-40: #e9695f;
+  --color-red-50: #d83933;
+  --color-red-60: #a23737;
+  --color-red-70: #6f3331;
+  --color-red-80: #3e2927;
+  --color-red-90: #1b1616;
+  --color-red-5v: #fff3f2;
+  --color-red-10v: #fde0db;
+  --color-red-20v: #fdb8ae;
+  --color-red-30v: #ff8d7b;
+  --color-red-40v: #fb5a47;
+  --color-red-50v: #e52207;
+  --color-red-60v: #b50909;
+  --color-red-70v: #8b0a03;
+  --color-red-80v: #5c1111;
+  --color-red-warm-5: #f6efea;
+  --color-red-warm-10: #f4e3db;
+  --color-red-warm-20: #ecc0a7;
+  --color-red-warm-30: #dca081;
+  --color-red-warm-40: #d27a56;
+  --color-red-warm-50: #c3512c;
+  --color-red-warm-60: #805039;
+  --color-red-warm-70: #524236;
+  --color-red-warm-80: #332d29;
+  --color-red-warm-90: #1f1c18;
+  --color-red-warm-5v: #fff5ee;
+  --color-red-warm-10v: #fce1d4;
+  --color-red-warm-20v: #f6bd9c;
+  --color-red-warm-30v: #f39268;
+  --color-red-warm-40v: #ef5e25;
+  --color-red-warm-50v: #d54309;
+  --color-red-warm-60v: #9c3d10;
+  --color-red-warm-70v: #63340f;
+  --color-red-warm-80v: #3e2a1e;
+  --color-orange-5: #f6efe9;
+  --color-orange-10: #f2e4d4;
+  --color-orange-20: #f3bf90;
+  --color-orange-30: #f09860;
+  --color-orange-40: #dd7533;
+  --color-orange-50: #a86437;
+  --color-orange-60: #775540;
+  --color-orange-70: #524236;
+  --color-orange-80: #332d27;
+  --color-orange-90: #1b1614;
+  --color-orange-5v: #fef2e4;
+  --color-orange-10v: #fce2c5;
+  --color-orange-20v: #ffbc78;
+  --color-orange-30v: #fa9441;
+  --color-orange-40v: #e66f0e;
+  --color-orange-50v: #c05600;
+  --color-orange-60v: #8c471c;
+  --color-orange-70v: #5f3617;
+  --color-orange-80v: #352313;
+  --color-orange-warm-5: #faeee5;
+  --color-orange-warm-10: #fbe0d0;
+  --color-orange-warm-20: #f7bca2;
+  --color-orange-warm-30: #f3966d;
+  --color-orange-warm-40: #e17141;
+  --color-orange-warm-50: #bd5727;
+  --color-orange-warm-60: #914734;
+  --color-orange-warm-70: #633a32;
+  --color-orange-warm-80: #3d2925;
+  --color-orange-warm-90: #1c1615;
+  --color-orange-warm-5v: #fff3ea;
+  --color-orange-warm-10v: #ffe2d1;
+  --color-orange-warm-20v: #fbbaa7;
+  --color-orange-warm-30v: #fc906d;
+  --color-orange-warm-40v: #ff580a;
+  --color-orange-warm-50v: #cf4900;
+  --color-orange-warm-60v: #a72f10;
+  --color-orange-warm-70v: #782312;
+  --color-orange-warm-80v: #3d231d;
+  --color-gold-5: #f5f0e6;
+  --color-gold-10: #f1e5cd;
+  --color-gold-20: #dec69a;
+  --color-gold-30: #c7a97b;
+  --color-gold-40: #ad8b65;
+  --color-gold-50: #8e704f;
+  --color-gold-60: #6b5947;
+  --color-gold-70: #4d4438;
+  --color-gold-80: #322d26;
+  --color-gold-90: #191714;
+  --color-gold-5v: #fef0c8;
+  --color-gold-10v: #ffe396;
+  --color-gold-20v: #ffbe2e;
+  --color-gold-30v: #e5a000;
+  --color-gold-40v: #c2850c;
+  --color-gold-50v: #936f38;
+  --color-gold-60v: #7a591a;
+  --color-gold-70v: #5c410a;
+  --color-gold-80v: #3b2b15;
+  --color-yellow-5: #faf3d1;
+  --color-yellow-10: #f5e6af;
+  --color-yellow-20: #e6c74c;
+  --color-yellow-30: #c9ab48;
+  --color-yellow-40: #a88f48;
+  --color-yellow-50: #8a7237;
+  --color-yellow-60: #6b5a39;
+  --color-yellow-70: #504332;
+  --color-yellow-80: #332d27;
+  --color-yellow-90: #1a1614;
+  --color-yellow-5v: #fff5c2;
+  --color-yellow-10v: #fee685;
+  --color-yellow-20v: #face00;
+  --color-yellow-30v: #ddaa01;
+  --color-yellow-40v: #b38c00;
+  --color-yellow-50v: #947100;
+  --color-yellow-60v: #776017;
+  --color-yellow-70v: #5c4809;
+  --color-yellow-80v: #422d19;
+  --color-green-cool-5: #ecf3ec;
+  --color-green-cool-10: #dbebde;
+  --color-green-cool-20: #b4d0b9;
+  --color-green-cool-30: #86b98e;
+  --color-green-cool-40: #5e9f69;
+  --color-green-cool-50: #4d8055;
+  --color-green-cool-60: #446443;
+  --color-green-cool-70: #37493b;
+  --color-green-cool-80: #28312a;
+  --color-green-cool-90: #1a1f1a;
+  --color-green-cool-5v: #e3f5e1;
+  --color-green-cool-10v: #b7f5bd;
+  --color-green-cool-20v: #70e17b;
+  --color-green-cool-30v: #21c834;
+  --color-green-cool-40v: #00a91c;
+  --color-green-cool-50v: #008817;
+  --color-green-cool-60v: #216e1f;
+  --color-green-cool-70v: #154c21;
+  --color-green-cool-80v: #19311e;
+  --color-green-5: #eaf4dd;
+  --color-green-10: #dfeacd;
+  --color-green-20: #b8d293;
+  --color-green-30: #9bb672;
+  --color-green-40: #7d9b4e;
+  --color-green-50: #607f35;
+  --color-green-60: #4c6424;
+  --color-green-70: #3c4a29;
+  --color-green-80: #293021;
+  --color-green-90: #161814;
+  --color-green-5v: #ddf9c7;
+  --color-green-10v: #c5ee93;
+  --color-green-20v: #98d035;
+  --color-green-30v: #7fb135;
+  --color-green-40v: #719f2a;
+  --color-green-50v: #538200;
+  --color-green-60v: #466c04;
+  --color-green-70v: #2f4a0b;
+  --color-green-80v: #243413;
+  --color-green-warm-5: #f1f4d7;
+  --color-green-warm-10: #e7eab7;
+  --color-green-warm-20: #cbd17a;
+  --color-green-warm-30: #a6b557;
+  --color-green-warm-40: #8a984b;
+  --color-green-warm-50: #6f7a41;
+  --color-green-warm-60: #5a5f38;
+  --color-green-warm-70: #45472f;
+  --color-green-warm-80: #2d2f21;
+  --color-green-warm-90: #171712;
+  --color-green-warm-5v: #f5fbc1;
+  --color-green-warm-10v: #e7f434;
+  --color-green-warm-20v: #c5d30a;
+  --color-green-warm-30v: #a3b72c;
+  --color-green-warm-40v: #7e9c1d;
+  --color-green-warm-50v: #6a7d00;
+  --color-green-warm-60v: #5a6613;
+  --color-green-warm-70v: #4b4e10;
+  --color-green-warm-80v: #38380b;
+  --color-mint-5: #dbf6ed;
+  --color-mint-10: #c7efe2;
+  --color-mint-20: #92d9bb;
+  --color-mint-30: #5abf95;  
+  --color-mint-40: #34a37e;
+  --color-mint-50: #2e8367;
+  --color-mint-60: #286846;
+  --color-mint-70: #204e34;
+  --color-mint-80: #193324;
+  --color-mint-90: #0d1a12;
+  --color-mint-5v: #c9fbeb;
+  --color-mint-10v: #83fcd4;
+  --color-mint-20v: #0ceda6;
+  --color-mint-30v: #04c585;
+  --color-mint-40v: #00a871;
+  --color-mint-50v: #008659;
+  --color-mint-60v: #146947;
+  --color-mint-70v: #0c4e29;
+  --color-mint-80v: #0d351e;
+  --color-mint-cool-5: #e0f7f6;
+  --color-mint-cool-10: #c4eeeb;
+  --color-mint-cool-20: #9bd4cf;
+  --color-mint-cool-30: #6fbab3;
+  --color-mint-cool-40: #4f9e99;
+  --color-mint-cool-50: #40807e;
+  --color-mint-cool-60: #376462;
+  --color-mint-cool-70: #2a4b45;
+  --color-mint-cool-80: #203131;
+  --color-mint-cool-90: #111818;
+  --color-mint-cool-5v: #d5fbf3;
+  --color-mint-cool-10v: #7efbe1;
+  --color-mint-cool-20v: #29e1cb;
+  --color-mint-cool-30v: #1dc2ae;
+  --color-mint-cool-40v: #00a398;
+  --color-mint-cool-50v: #008480;
+  --color-mint-cool-60v: #0f6460;
+  --color-mint-cool-70v: #0b4b3f;
+  --color-mint-cool-80v: #123131;
+  --color-cyan-5: #e7f6f8;
+  --color-cyan-10: #ccecf2;
+  --color-cyan-20: #99deea;
+  --color-cyan-30: #5dc0d1;
+  --color-cyan-40: #449dac;
+  --color-cyan-50: #168092;
+  --color-cyan-60: #2a646d;
+  --color-cyan-70: #2c4a4e;
+  --color-cyan-80: #203133;
+  --color-cyan-90: #111819;
+  --color-cyan-5v: #e5faff;
+  --color-cyan-10v: #a8f2ff;
+  --color-cyan-20v: #52daf2;
+  --color-cyan-30v: #00bde3;
+  --color-cyan-40v: #009ec1;
+  --color-cyan-50v: #0081a1;
+  --color-cyan-60v: #00687d;
+  --color-cyan-70v: #0e4f5c;
+  --color-cyan-80v: #093b44;
+  --color-blue-cool-5: #e7f2f5;
+  --color-blue-cool-10: #dae9ee;
+  --color-blue-cool-20: #adcfdc;
+  --color-blue-cool-30: #82b4c9;
+  --color-blue-cool-40: #6499af;
+  --color-blue-cool-50: #3a7d95;
+  --color-blue-cool-60: #2e6276;
+  --color-blue-cool-70: #224a58;
+  --color-blue-cool-80: #14333d;
+  --color-blue-cool-90: #0f191c;
+  --color-blue-cool-5v: #e1f3f8;
+  --color-blue-cool-10v: #c3ebfa;
+  --color-blue-cool-20v: #97d4ea;
+  --color-blue-cool-30v: #59b9de;
+  --color-blue-cool-40v: #28a0cb;
+  --color-blue-cool-50v: #0d7ea2;
+  --color-blue-cool-60v: #07648d;
+  --color-blue-cool-70v: #074b69;
+  --color-blue-cool-80v: #002d3f;
+  --color-blue-5: #eff6fb;
+  --color-blue-10: #d9e8f6;
+  --color-blue-20: #aacdec;
+  --color-blue-30: #73b3e7;
+  --color-blue-40: #4f97d1;
+  --color-blue-50: #2378c3;
+  --color-blue-60: #2c608a;
+  --color-blue-70: #274863;
+  --color-blue-80: #1f303e;
+  --color-blue-90: #11181d;
+  --color-blue-5v: #e8f5ff;
+  --color-blue-10v: #cfe8ff;
+  --color-blue-20v: #a1d3ff;
+  --color-blue-30v: #58b4ff;
+  --color-blue-40v: #2491ff;
+  --color-blue-50v: #0076d6;
+  --color-blue-60v: #005ea2;
+  --color-blue-70v: #0b4778;
+  --color-blue-80v: #112f4e;
+  --color-blue-warm-5: #ecf1f7;
+  --color-blue-warm-10: #e1e7f1;
+  --color-blue-warm-20: #bbcae4;
+  --color-blue-warm-30: #98afd2;
+  --color-blue-warm-40: #7292c7;
+  --color-blue-warm-50: #4a77b4;
+  --color-blue-warm-60: #345d96;
+  --color-blue-warm-70: #2f4668;
+  --color-blue-warm-80: #252f3e;
+  --color-blue-warm-90: #13171f;
+  --color-blue-warm-5v: #edf5ff;
+  --color-blue-warm-10v: #d4e5ff;
+  --color-blue-warm-20v: #adcdff;
+  --color-blue-warm-30v: #81aefc;
+  --color-blue-warm-40v: #5994f6;
+  --color-blue-warm-50v: #2672de;
+  --color-blue-warm-60v: #0050d8;
+  --color-blue-warm-70v: #1a4480;
+  --color-blue-warm-80v: #162e51;
+  --color-indigo-cool-5: #eef0f9;
+  --color-indigo-cool-10: #e1e6f9;
+  --color-indigo-cool-20: #bbc8f5;
+  --color-indigo-cool-30: #96abee;
+  --color-indigo-cool-40: #6b8ee8;
+  --color-indigo-cool-50: #496fd8;
+  --color-indigo-cool-60: #3f57a6;
+  --color-indigo-cool-70: #374274;
+  --color-indigo-cool-80: #292d42;
+  --color-indigo-cool-90: #151622;
+  --color-indigo-cool-5v: #edf0ff;
+  --color-indigo-cool-10v: #dee5ff;
+  --color-indigo-cool-20v: #b8c8ff;
+  --color-indigo-cool-30v: #94adff;
+  --color-indigo-cool-40v: #628ef4;
+  --color-indigo-cool-50v: #4866ff;
+  --color-indigo-cool-60v: #3e4ded;
+  --color-indigo-cool-70v: #222fbf;
+  --color-indigo-cool-80v: #1b2b85;
+  --color-indigo-5: #efeff8;
+  --color-indigo-10: #e5e4fa;
+  --color-indigo-20: #c5c5f3;
+  --color-indigo-30: #a5a8eb;
+  --color-indigo-40: #8889db;
+  --color-indigo-50: #676cc8;
+  --color-indigo-60: #4d52af;
+  --color-indigo-70: #3d4076;
+  --color-indigo-80: #2b2c40;
+  --color-indigo-90: #16171f;
+  --color-indigo-5v: #f0f0ff;
+  --color-indigo-10v: #e0e0ff;
+  --color-indigo-20v: #ccceff;
+  --color-indigo-30v: #a3a7fa;
+  --color-indigo-40v: #8289ff;
+  --color-indigo-50v: #656bd7;
+  --color-indigo-60v: #4a50c4;
+  --color-indigo-70v: #3333a3;
+  --color-indigo-80v: #212463;
+  --color-indigo-warm-5: #f1eff7;
+  --color-indigo-warm-10: #e7e3fa;
+  --color-indigo-warm-20: #cbc4f2;
+  --color-indigo-warm-30: #afa5e8;
+  --color-indigo-warm-40: #9287d8;
+  --color-indigo-warm-50: #7665d1;
+  --color-indigo-warm-60: #5e519e;
+  --color-indigo-warm-70: #453c7b;
+  --color-indigo-warm-80: #2e2c40;
+  --color-indigo-warm-90: #18161d;
+  --color-indigo-warm-5v: #f5f2ff;
+  --color-indigo-warm-10v: #e4deff;
+  --color-indigo-warm-20v: #cfc4fd;
+  --color-indigo-warm-30v: #b69fff;
+  --color-indigo-warm-40v: #967efb;
+  --color-indigo-warm-50v: #745fe9;
+  --color-indigo-warm-60v: #5942d2;
+  --color-indigo-warm-70v: #3d2c9d;
+  --color-indigo-warm-80v: #261f5b;
+  --color-violet-5: #f4f1f9;
+  --color-violet-10: #ebe3f9;
+  --color-violet-20: #d0c3e9;
+  --color-violet-30: #b8a2e3;
+  --color-violet-40: #9d84d2;
+  --color-violet-50: #8168b3;
+  --color-violet-60: #665190;
+  --color-violet-70: #4c3d69;
+  --color-violet-80: #312b3f;
+  --color-violet-90: #18161d;
+  --color-violet-5v: #f7f2ff;
+  --color-violet-10v: #ede3ff;
+  --color-violet-20v: #d5bfff;
+  --color-violet-30v: #c39deb;
+  --color-violet-40v: #ad79e9;
+  --color-violet-50v: #9355dc;
+  --color-violet-60v: #783cb9;
+  --color-violet-70v: #54278f;
+  --color-violet-80v: #39215e;
+  --color-violet-warm-5: #f8f0f9;
+  --color-violet-warm-10: #f6dff8;
+  --color-violet-warm-20: #e2bee4;
+  --color-violet-warm-30: #d29ad8;
+  --color-violet-warm-40: #bf77c8;
+  --color-violet-warm-50: #b04abd;
+  --color-violet-warm-60: #864381;
+  --color-violet-warm-70: #5c395a;
+  --color-violet-warm-80: #382936;
+  --color-violet-warm-90: #1b151b;
+  --color-violet-warm-5v: #fef2ff;
+  --color-violet-warm-10v: #fbdcff;
+  --color-violet-warm-20v: #f4b2ff;
+  --color-violet-warm-30v: #ee83ff;
+  --color-violet-warm-40v: #d85bef;
+  --color-violet-warm-50v: #be32d0;
+  --color-violet-warm-60v: #93348c;
+  --color-violet-warm-70v: #711e6c;
+  --color-violet-warm-80v: #481441;
+  --color-magenta-5: #f9f0f2;
+  --color-magenta-10: #f6e1e8;
+  --color-magenta-20: #f0bbcc;
+  --color-magenta-30: #e895b3;
+  --color-magenta-40: #e0699f;
+  --color-magenta-50: #c84281;
+  --color-magenta-60: #8b4566;
+  --color-magenta-70: #66364b;
+  --color-magenta-80: #402731;
+  --color-magenta-90: #1b1617;
+  --color-magenta-5v: #fff2f5;
+  --color-magenta-10v: #ffddea;
+  --color-magenta-20v: #ffb4cf;
+  --color-magenta-30v: #ff87b2;
+  --color-magenta-40v: #fd4496;
+  --color-magenta-50v: #d72d79;
+  --color-magenta-60v: #ab2165;
+  --color-magenta-70v: #731f44;
+  --color-magenta-80v: #4f172e;
+
+/* NCIDS Color Palette */
+  --color-cerulean-5: #e9eff2;
+  --color-cerulean-10: #d4e7f2;
+  --color-cerulean-20: #99cae4;
+  --color-cerulean-30: #66afd7;
+  --color-cerulean-40: #3395ca;
+  --color-cerulean-50: #007bbd;
+  --color-cerulean-60: #006297;
+  --color-cerulean-70: #004971;
+  --color-cerulean-80: #00314b;
+  --color-cerulean-90: #11181d;
+  --color-cerulean-5v: #d1f4ff;
+  --color-cerulean-10v: #c4e9fd;
+  --color-cerulean-20v: #9dd7ff;
+  --color-cerulean-30v: #51b8f0;
+  --color-cerulean-40v: #2099df;
+  --color-cerulean-50v: #067cbc;
+  --color-cerulean-60v: #01679d;
+  --color-cerulean-70v: #0f477d;
+  --color-cerulean-80v: #002d3f;
+  --color-cranberry-5: #ffebf1;
+  --color-cranberry-10: #fde2ea;
+  --color-cranberry-20: #f1c5d2;
+  --color-cranberry-30: #e39eb1;
+  --color-cranberry-40: #d66e8a;
+  --color-cranberry-50: #d13d64;
+  --color-cranberry-60: #bb0e3d;
+  --color-cranberry-70: #950b30;
+  --color-cranberry-80: #700824;
+  --color-cranberry-90: #420516;
+  --color-cranberry-5v: #fff2f5;
+  --color-cranberry-10v: #ffdbe7;
+  --color-cranberry-20v: #fbacc5;
+  --color-cranberry-30v: #f27da2;
+  --color-cranberry-40v: #f4487e;
+  --color-cranberry-50v: #e41154;
+  --color-cranberry-60v: #b60d43;
+  --color-cranberry-70v: #880a32;
+  --color-cranberry-80v: #5b0621;
+  --color-golden-5: #fdf2bf;
+  --color-golden-10: #fee685;
+  --color-golden-20: #face00;
+  --color-golden-30: #ddaa01;
+  --color-golden-40: #b38c00;
+  --color-golden-50: #947100;
+  --color-golden-60: #776017;
+  --color-golden-70: #5c4809;
+  --color-golden-80: #422d19;
+  --color-golden-90: #1a1614;
+  --color-golden-5v: #fef0c8;
+  --color-golden-10v: #ffe396;
+  --color-golden-20v: #ffbe2e;
+  --color-golden-30v: #e5a000;
+  --color-golden-40v: #c2850c;
+  --color-golden-50v: #936f38;
+  --color-golden-60v: #7a591a;
+  --color-golden-70v: #5c410a;
+  --color-golden-80v: #3b2b15;
+  --color-navy-5: #e7eff8;
+  --color-navy-10: #d7e5f4;
+  --color-navy-20: #bcc7d7;
+  --color-navy-30: #92a9c8;
+  --color-navy-40: #6c8dbc;
+  --color-navy-50: #5478ab;
+  --color-navy-60: #3e6498;
+  --color-navy-70: #284976;
+  --color-navy-80: #14315c;
+  --color-navy-90: #06162d;
+  --color-navy-5v: #e3effd;
+  --color-navy-10v: #e5f2ff;
+  --color-navy-20v: #bcd3f6;
+  --color-navy-30v: #83b1ec;
+  --color-navy-40v: #5e91d9;
+  --color-navy-50v: #4177c3;
+  --color-navy-60v: #1c5cb5;
+  --color-navy-70v: #13458b;
+  --color-navy-80v: #0c3573;
+  --color-teal-5: #dbf2f3;
+  --color-teal-10: #beebee;
+  --color-teal-20: #93d8dc;
+  --color-teal-30: #4bbfc6;
+  --color-teal-40: #3c989e;
+  --color-teal-50: #298085;
+  --color-teal-60: #226467;
+  --color-teal-70: #1e4c4f;
+  --color-teal-80: #17373a;
+  --color-teal-90: #102223;
+  --color-teal-5v: #def6f7;
+  --color-teal-10v: #a3eef1;
+  --color-teal-20v: #67e4e8;
+  --color-teal-30v: #52b6b9;
+  --color-teal-40v: #42979a;
+  --color-teal-50v: #338084;
+  --color-teal-60v: #206b6f;
+  --color-teal-70v: #235152;
+  --color-teal-80v: #1a3c3d;
+
+  /* Gray Family */
+  --color-gray-cool-1: #fbfcfd;
+  --color-gray-cool-2: #f7f9fa;
+  --color-gray-cool-3: #f5f6f7;
+  --color-gray-cool-4: #f1f3f6;
+  --color-gray-cool-5: #edeff0;
+  --color-gray-cool-10: #dfe1e2;
+  --color-gray-cool-20: #c6cace;
+  --color-gray-cool-30: #a9aeb1;
+  --color-gray-cool-40: #8d9297;
+  --color-gray-cool-50: #71767a;
+  --color-gray-cool-60: #565c65;
+  --color-gray-cool-70: #3d4551;
+  --color-gray-cool-80: #2d2e2f;
+  --color-gray-cool-90: #1c1d1f;
+  --color-gray-1: #fcfcfc;
+  --color-gray-2: #f9f9f9;
+  --color-gray-3: #f6f6f6;
+  --color-gray-4: #f3f3f3;
+  --color-gray-5: #f0f0f0;
+  --color-gray-10: #e6e6e6;
+  --color-gray-20: #c9c9c9;
+  --color-gray-30: #adadad;
+  --color-gray-40: #919191;
+  --color-gray-50: #757575;
+  --color-gray-60: #5c5c5c;
+  --color-gray-70: #454545;
+  --color-gray-80: #2e2e2e;
+  --color-gray-90: #1b1b1b;
+  --color-gray-warm-1: #fcfcfb;
+  --color-gray-warm-2: #f9f9f7;
+  --color-gray-warm-3: #f6f6f2;
+  --color-gray-warm-4: #f5f5f0;
+  --color-gray-warm-5: #f0f0ec;
+  --color-gray-warm-10: #e6e6e2;
+  --color-gray-warm-20: #cac9c0;
+  --color-gray-warm-30: #afaea2;
+  --color-gray-warm-40: #929285;
+  --color-gray-warm-50: #76766a;
+  --color-gray-warm-60: #5d5d52;
+  --color-gray-warm-70: #454540;
+  --color-gray-warm-80: #2e2e2a;
+  --color-gray-warm-90: #171716;
+
+  /* Responsive breakpoints */
+  --breakpoint-card: 160px;
+  --breakpoint-card-lg: 240px;
+  --breakpoint-mobile: 320px;
+  --breakpoint-mobile-lg: 480px;
+  --breakpoint-tablet: 640px;
+  --breakpoint-tablet-lg: 880px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-desktop-lg: 1200px;
+  --breakpoint-widescreen: 1400px;
+
+  /* Container sizes */
+  --size-card: 160px;
+  --size-card-lg: 240px;
+  --size-mobile: 320px;
+  --size-mobile-lg: 480px;
+  --size-tablet: 640px;
+  --size-tablet-lg: 880px;
+  --size-desktop: 1024px;
+  --size-desktop-lg: 1200px;
+  --size-widescreen: 1400px;
+}
+
+/* Import Tailwind v4 compatible plugins via CSS */
+/* @plugin "@tailwindcss/forms"; */
+/* @plugin "@tailwindcss/container-queries"; */
+/* @plugin "tailwindcss-animate"; */
+
+/* Custom utilities */
+.font-merriweather {
+  --font-normalization: 0.98;
+  font-family: var(--font-family-merriweather);
+}
+
+.font-public-sans {
+  --font-normalization: 1;
+  font-family: var(--font-family-public-sans);
+}
+
+.font-source-sans {
+  --font-normalization: 1.06;
+  font-family: var(--font-family-source-sans);
+}
+
+.font-open-sans {
+  --font-normalization: 1.01;
+  font-family: var(--font-family-open-sans);
+}
+
+.font-roboto-mono {
+  --font-normalization: 0.95;
+  font-family: var(--font-family-roboto-mono);
+}
+
+.font-georgia {
+  --font-normalization: 1.05;
+  font-family: var(--font-family-georgia);
+}
+
+.font-helvetica {
+  --font-normalization: 1.01;
+  font-family: var(--font-family-helvetica);
+}
+
+.font-tahoma {
+  --font-normalization: 1.0;
+  font-family: var(--font-family-tahoma);
+}
+
+.font-verdana {
+  --font-normalization: 0.99;
+  font-family: var(--font-family-verdana);
+}
+
+.font-poppins {
+  --font-normalization: 1.0;
+  font-family: var(--font-family-poppins);
+}
+
+/* Custom variants */
+/* @custom-variant thumb {
+  @media {
+    &::-webkit-slider-thumb, &::-moz-range-thumb, &::-ms-thumb {
+      @content;
+    }
+  }
+}
+
+@custom-variant track {
+  @media {
+    &::-webkit-slider-runnable-track, &::-moz-range-track, &::-ms-track {
+      @content;
+    }
+  }
+}
+
+@custom-variant valid {
+  @media {
+    &[data-valid] {
+      @content;
+    }
+  }
+}
+
+@custom-variant invalid {
+  @media {
+    &[data-invalid] {
+      @content;
+    }
+  }
+}
+
+@custom-variant forced-colors {
+  @media (forced-colors: active) {
+    @content;
+  }
+} */
+
+/* Hidden until found utility */
+/* @utility {
+  .\[hidden\=until-found\] {
+    @supports (content-visibility: hidden) {
+      display: inherit;
+      content-visibility: hidden;
+    }
+  }
+} */
