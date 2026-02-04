@@ -34,6 +34,7 @@ export interface FilterSidebarProps {
   onSearch: (query: string) => void
   searchPlaceholder?: string
   className?: string
+  children?: React.ReactNode
 }
 
 // Filter category button component
@@ -125,7 +126,8 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
   onClearAll,
   onSearch,
   searchPlaceholder = "e.g. Sarcoma/Neoplasm",
-  className
+  className,
+  children
 }) => {
   const [activeCategory, setActiveCategory] = React.useState<string | null>(null)
   const [searchQuery, setSearchQuery] = React.useState("")
@@ -186,7 +188,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
 
       {/* Right Content Area - Light Background */}
       <div className="flex-1 bg-gray-5 overflow-y-auto">
-        {activeCategory && (
+        {activeCategory ? (
           <div className="p-6">
             {/* Header */}
             <div className="mb-6">
@@ -336,17 +338,26 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
                 </AccordionItem>
               </Accordion>
             </div>
+            
+            {/* Show children below filter options if provided */}
+            {children && (
+              <div className="mt-8 border-t border-gray-20 pt-8">
+                {children}
+              </div>
+            )}
           </div>
-        )}
-
-        {/* No Category Selected State */}
-        {!activeCategory && (
-          <div className="flex items-center justify-center h-full text-gray-60">
-            <div className="text-center">
-              <Icon icon="bookmark" size="lg" className="size-16 mx-auto mb-4" />
-              <p className="text-lg">Select a filter category to begin</p>
+        ) : (
+          /* No Category Selected State - Show children if provided, otherwise show placeholder */
+          children ? (
+            children
+          ) : (
+            <div className="flex items-center justify-center h-full text-gray-60">
+              <div className="text-center">
+                <Icon icon="bookmark" size="lg" className="size-16 mx-auto mb-4" />
+                <p className="text-lg">Select a filter category to begin</p>
+              </div>
             </div>
-          </div>
+          )
         )}
       </div>
     </div>
