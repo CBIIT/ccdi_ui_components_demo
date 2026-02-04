@@ -14,12 +14,6 @@ import {
 
 export default function DashboardPage() {
   const [selectedFilters, setSelectedFilters] = React.useState<string[]>([])
-  const pieId = React.useId()
-  const lineId = React.useId()
-  const barId = React.useId()
-  const areaId = React.useId()
-  const horizontalBarId = React.useId()
-  const composedId = React.useId()
 
   const handleFilterChange = (filterId: string, isSelected: boolean) => {
     setSelectedFilters(prev => 
@@ -63,12 +57,12 @@ export default function DashboardPage() {
           )}
           
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            <PieChartCard id={pieId} />
-            <LineChartCard id={lineId} />
-            <BarChartCard id={barId} />
-            <AreaChartCard id={areaId} />
-            <HorizontalBarChartCard id={horizontalBarId} />
-            <ComposedChartCard id={composedId} />
+            <PieChartCard />
+            <LineChartCard />
+            <BarChartCard />
+            <AreaChartCard />
+            <HorizontalBarChartCard />
+            <ComposedChartCard />
           </div>
         </div>
       </FilterSidebar>

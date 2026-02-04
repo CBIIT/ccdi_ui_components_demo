@@ -10,13 +10,9 @@ import {
 } from "@/components/charts/chart"
 import { chartMetricsData, chartMetricsConfig } from "../data/chart-data"
 
-interface ComposedChartCardProps {
-  id: string
-}
-
-export function ComposedChartCard({ id }: ComposedChartCardProps) {
+export function ComposedChartCard() {
   return (
-    <Card data-chart={id} className="flex flex-col max-w-xl">
+    <Card className="flex flex-col max-w-xl">
       <CardHeader className="flex-row items-start space-y-0 pb-0">
         <div className="grid gap-1">
           <h2 className="font-bold font-merriweather text-lg">
@@ -29,7 +25,6 @@ export function ComposedChartCard({ id }: ComposedChartCardProps) {
       </CardHeader>
       <CardContent className="flex flex-1 justify-center pb-0">
         <ChartContainer
-          id={id}
           config={chartMetricsConfig}
           className="mx-auto aspect-video w-full"
         >
