@@ -340,11 +340,11 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
             </div>
             
             {/* Show children below filter options if provided */}
-            {children && (
+            {/* {children && (
               <div className="mt-8 border-t border-gray-20 pt-8">
                 {children}
               </div>
-            )}
+            )} */}
           </div>
         ) : (
           /* No Category Selected State - Show children if provided, otherwise show placeholder */
