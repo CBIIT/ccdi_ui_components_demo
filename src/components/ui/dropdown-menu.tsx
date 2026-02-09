@@ -42,7 +42,7 @@ type DropdownMenuContextType = {
 
 const DropdownMenuContext = React.createContext<DropdownMenuContextType | undefined>(undefined)
 
-const useDropdownMenu = () => {
+export const useDropdownMenu = () => {
   const context = React.useContext(DropdownMenuContext)
   if (!context) {
     throw new Error('DropdownMenu components must be used within DropdownMenu')
@@ -148,8 +148,18 @@ const DropdownMenuContent = React.forwardRef<HTMLDivElement, DropdownMenuContent
           className
         )}
         style={{
-          marginTop: side === "bottom" ? `${sideOffset}px` : undefined,
-          marginBottom: side === "top" ? `${sideOffset}px` : undefined,
+          top: side === "bottom" ? "100%" : (side === "left" || side === "right") ? "50%" : undefined,
+          bottom: side === "top" ? "100%" : undefined,
+          left: align === "start" ? 0 : align === "center" ? "50%" : undefined,
+          right: align === "end" ? 0 : undefined,
+          transform:
+            align === "center" && (side === "bottom" || side === "top")
+              ? "translateX(-50%)"
+              : (side === "left" || side === "right")
+                ? "translateY(-50%)"
+                : undefined,
+          marginTop: side === "bottom" ? sideOffset : undefined,
+          marginBottom: side === "top" ? sideOffset : undefined,
         }}
         {...props}
       >
