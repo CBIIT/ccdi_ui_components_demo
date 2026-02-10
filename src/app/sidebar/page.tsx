@@ -453,6 +453,7 @@ export default function Sidebar() {
 
   return (
     <div className="h-screen">
+      <h1 className="sr-only">Filter Sidebar</h1>
       <FilterSidebar
         categories={sampleCategories}
         selectedFilters={selectedFilters}

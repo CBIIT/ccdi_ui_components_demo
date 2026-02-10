@@ -229,19 +229,19 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
       <aside className="w-80 bg-teal-60 text-white flex flex-col">
         <div className="p-4 space-y-3">
           <div>
-            <Button variant="outline-inverse" size="icon" className="mr-2">
+            <Button variant="outline-inverse" size="icon" className="mr-2" aria-label="Explore the CCDI User Guide">
               <Icon icon="help" size="sm" className="h-5 w-5" />
             </Button>
             <span>Explore the CCDI User Guide</span>
           </div>
           <div>
-            <Button variant="outline-inverse" size="icon" className="mr-2">
+            <Button variant="outline-inverse" size="icon" className="mr-2" aria-label="Notes to User">
               <Icon icon="help" size="sm" className="h-5 w-5" />
             </Button>
             <span>Notes to User</span>
           </div>
           <div>
-            <Button variant="outline-inverse" size="icon" className="mr-2" onClick={onClearAll}>
+            <Button variant="outline-inverse" size="icon" className="mr-2" onClick={onClearAll} aria-label="Clear all filtered selections">
               <Icon icon="remove" size="sm" className="h-5 w-5" />
             </Button>
             <span>Clear all filtered selections</span>
@@ -367,7 +367,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
                                   <span>VIEW EXPANDED DISPLAY</span>
                                   <Badge
                                     variant="secondary"
-                                    className="min-w-10 justify-center rounded-sm bg-white/20 px-2 py-0.5 text-sm text-white hover:bg-white/20"
+                                    className="min-w-10 justify-center rounded-sm bg-teal-60 px-2 py-0.5 text-sm text-white hover:bg-teal-80"
                                   >
                                     {(facet.expandedCount ?? visibleOptions.length).toLocaleString()}
                                   </Badge>
