@@ -10,48 +10,9 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
 import { NumericRangeFilter, type UnknownOptionValue } from "@/components/blocks/filter-sidebar/numeric-range-filter"
+import { FilterCategory, FilterFacet, FilterOptionValue } from "@/components/blocks/filter-sidebar/filter-sidebar-types"
 
-// Types for filter categories (matches sampleCategories in sidebar/page.tsx)
-export type FilterOptionValue = {
-  id: string;
-  label: string;
-  count: number;
-}
-
-export type FilterFacet = {
-  id: string;
-  label: string;
-  isActive?: boolean;
-  searchEnabled?: boolean;
-  searchPlaceholder?: string;
-  expandedDisplayEnabled?: boolean;
-  expandedCount?: number;
-  sortEnabled?: boolean;
-  ageEnabled?: boolean;
-  ageConfig?: {
-    min: number;
-    max: number;
-    units: { value: string; label: string }[];
-  };
-  options?: FilterOptionValue[];
-}
-
-export type FilterCategory = {
-  id: string;
-  label: string;
-  color: string;
-  searchEnabled?: boolean;
-  searchPlaceholder?: string;
-  uploadEnabled?: boolean;
-  uploadLabel?: string;
-  // selectedCount?: number;
-  children?: FilterFacet[];
-}
-
-/** @deprecated Use FilterOptionValue for checkbox rows; FilterFacet for accordion subsections. */
-export type FilterOption = FilterOptionValue
-
-export type FilterSidebarProps = {
+type FilterSidebarProps = {
   categories: FilterCategory[];
   selectedFilters: string[];
   onFilterChange: (filterId: string, isSelected: boolean) => void;
@@ -142,8 +103,8 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
   const [activeCategory, setActiveCategory] = React.useState<string | null>(() => {
     return categories[0]?.id ?? null
   })
-  const [searchQuery, setSearchQuery] = React.useState("")
-  const [sortMode, setSortMode] = React.useState<"alpha" | "count">("alpha")
+  const [searchByFacetId, setSearchByFacetId] = React.useState<Record<string, string>>({})
+  const [sortModeByFacetId, setSortModeByFacetId] = React.useState<Record<string, "alpha" | "count">>({})
 
   type AgeRangeState = {
     valueMin: number
@@ -182,8 +143,37 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
     })
   }, [getInitialAgeRangeState])
 
-  const handleSearch = (query: string) => {
-    setSearchQuery(query)
+  const getSearchForFacet = React.useCallback((facetId: string): string => {
+    return searchByFacetId[facetId] ?? ""
+  }, [searchByFacetId])
+
+  const getSortModeForFacet = React.useCallback((facetId: string): "alpha" | "count" => {
+    return sortModeByFacetId[facetId] ?? "alpha"
+  }, [sortModeByFacetId])
+
+  const setSearchForFacet = React.useCallback((facetId: string, query: string) => {
+    setSearchByFacetId((prev) => ({ ...prev, [facetId]: query }))
+  }, [])
+
+  const setSortModeForFacet = React.useCallback((facetId: string, mode: "alpha" | "count") => {
+    setSortModeByFacetId((prev) => ({ ...prev, [facetId]: mode }))
+  }, [])
+
+  const getVisibleOptionsForFacet = React.useCallback((facet: FilterFacet): FilterOptionValue[] => {
+    const options = facet.options ?? []
+    const searchQuery = facet.searchEnabled ? (getSearchForFacet(facet.id).trim().toLowerCase()) : ""
+    const filtered = searchQuery
+      ? options.filter((o) => o.label.toLowerCase().includes(searchQuery))
+      : options.slice()
+    const sortMode = facet.sortEnabled ? getSortModeForFacet(facet.id) : "alpha"
+    filtered.sort((a, b) => {
+      if (sortMode === "count") return b.count - a.count
+      return a.label.localeCompare(b.label)
+    })
+    return filtered
+  }, [getSearchForFacet, getSortModeForFacet])
+
+  const handleFacetSearch = (query: string) => {
     onSearch(query)
   }
 
@@ -212,36 +202,25 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
     return map
   }, [categories, selectedFilters])
 
-  const visibleOptions = React.useMemo(() => {
-    const options = mainFacet?.options ?? []
-    const q = searchQuery.trim().toLowerCase()
-    const filtered = q ? options.filter((o) => o.label.toLowerCase().includes(q)) : options.slice()
-    filtered.sort((a, b) => {
-      if (sortMode === "count") return b.count - a.count
-      return a.label.localeCompare(b.label)
-    })
-    return filtered
-  }, [mainFacet, searchQuery, sortMode])
-
   return (
     <div className={cn("flex h-screen bg-gray-10", className)}>
       {/* Left rail */}
       <aside className="w-80 bg-teal-60 text-white flex flex-col">
         <div className="p-4 space-y-3">
-          <div>
-            <Button variant="outline-inverse" size="icon" className="mr-2" aria-label="Explore the CCDI User Guide">
-              <Icon icon="help" size="sm" className="h-5 w-5" />
+          <div className="flex items-center gap-2">
+            <Button variant="outline-inverse" size="icon" aria-label="Explore the CCDI User Guide">
+              <Icon icon="assessment" size="sm" className="h-5 w-5" />
             </Button>
             <span>Explore the CCDI User Guide</span>
           </div>
-          <div>
-            <Button variant="outline-inverse" size="icon" className="mr-2" aria-label="Notes to User">
-              <Icon icon="help" size="sm" className="h-5 w-5" />
+          <div className="flex items-center gap-2">
+            <Button variant="outline-inverse" size="icon" aria-label="Notes to User">
+              <Icon icon="label" size="sm" className="h-5 w-5" />
             </Button>
             <span>Notes to User</span>
           </div>
-          <div>
-            <Button variant="outline-inverse" size="icon" className="mr-2" onClick={onClearAll} aria-label="Clear all filtered selections">
+          <div className="flex items-center gap-2">
+            <Button variant="outline-inverse" size="icon" onClick={onClearAll} aria-label="Clear all filtered selections">
               <Icon icon="remove" size="sm" className="h-5 w-5" />
             </Button>
             <span>Clear all filtered selections</span>
@@ -304,7 +283,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
                   {activeCategoryData.searchEnabled && (
                     <Search
                       placeholder={activeCategoryData.searchPlaceholder ?? searchPlaceholder}
-                      onSearch={handleSearch}
+                      onSearch={handleFacetSearch}
                       iconOnly={true}
                       className="max-w-none border-gray-40"
                       inputProps={{ className: "max-w-none border-gray-40 bg-white" }}
@@ -322,6 +301,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
                   )}
                 </div>
               )}
+
               <Accordion
                 key={activeCategoryData.id}
                 type="multiple"
@@ -330,9 +310,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
                 className="bg-white"
               >
                 {facets.map((facet) => {
-                  // const isMainFacet = facet.id === mainFacet?.id
-                  const options = facet.options ?? []
-                  // console.log(isMainFacet)
+                  const visibleOptions = getVisibleOptionsForFacet(facet)
 
                   return (
                     <AccordionItem key={facet.id} value={facet.id} className="border-b border-gray-20">
@@ -346,7 +324,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
                               {facet.searchEnabled && (
                                 <Search
                                   placeholder={facet.searchPlaceholder ?? searchPlaceholder}
-                                  onSearch={handleSearch}
+                                  onSearch={(query) => setSearchForFacet(facet.id, query)}
                                   iconOnly={true}
                                   className="max-w-none border-gray-40"
                                   inputProps={{ className: "max-w-none border-gray-40 bg-white" }}
@@ -357,7 +335,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
                                 />
                               )}
 
-                              {!!facet.expandedCount && (
+                              {facet.expandedDisplayEnabled && (
                                 <Button
                                   type="button"
                                   variant="secondary"
@@ -376,30 +354,29 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
 
                               {facet.sortEnabled && (
                                 <div className="flex items-center justify-between gap-2">
+                                  <Icon icon="sort_arrow" size="sm" className="h-4 w-4" />
                                   <Button
                                     type="button"
                                     variant="link"
                                     size="sm"
-                                    // className={cn(
-                                    //   "no-underline !p-0 inline-flex items-center gap-2 text-gray-60 hover:text-gray-90",
-                                    //   sortMode === "alpha" && "text-gray-90 font-semibold"
-                                    // )}
-                                    onClick={() => setSortMode("alpha")}
+                                    className={cn(
+                                      "no-underline !p-0 inline-flex items-center gap-2 text-gray-60 hover:text-gray-90",
+                                      getSortModeForFacet(facet.id) === "alpha" && "text-gray-90 font-semibold"
+                                    )}
+                                    onClick={() => setSortModeForFacet(facet.id, "alpha")}
                                   >
-                                    <Icon icon="sort_arrow" size="sm" className="h-4 w-4" />{' '}
                                     Sort Alphabetically
                                   </Button>
                                   <Button
                                     type="button"
                                     variant="link"
                                     size="sm"
-                                    // className={cn(
-                                    //   "no-underline !p-0 inline-flex items-center gap-2 text-gray-60 hover:text-gray-90",
-                                    //   sortMode === "count" && "text-gray-90 font-semibold"
-                                    // )}
-                                    onClick={() => setSortMode("count")}
+                                    className={cn(
+                                      "no-underline !p-0 inline-flex items-center gap-2 text-gray-60 hover:text-gray-90",
+                                      getSortModeForFacet(facet.id) === "count" && "text-gray-90 font-semibold"
+                                    )}
+                                    onClick={() => setSortModeForFacet(facet.id, "count")}
                                   >
-                                    <Icon icon="filter_list" size="sm" className="h-4 w-4" />{' '}
                                     Sort by Count
                                   </Button>
                                 </div>
@@ -415,38 +392,36 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
                                   ]
                                   const ageState = getAgeRangeState(facet)
                                   return (
-                                    <div className="">
-                                      <NumericRangeFilter
-                                        min={min}
-                                        max={max}
-                                        valueMin={ageState.valueMin}
-                                        valueMax={ageState.valueMax}
-                                        onRangeChange={(valueMin, valueMax) =>
-                                          updateAgeRange(facet, { valueMin, valueMax })
-                                        }
-                                        units={units}
-                                        unit={ageState.unit}
-                                        onUnitChange={(unit) => updateAgeRange(facet, { unit })}
-                                        unknownLabel="UNKNOWN AGES:"
-                                        unknownValue={ageState.unknownValue}
-                                        onUnknownChange={(unknownValue) =>
-                                          updateAgeRange(facet, { unknownValue })
-                                        }
-                                        onReset={() =>
-                                          setAgeRangeByFacetId((prev) => {
-                                            const { [facet.id]: _, ...rest } = prev
-                                            return rest
-                                          })
-                                        }
-                                        formatLabel={(n) => n.toLocaleString()}
-                                        accentColor={activeCategoryData?.color}
-                                      />
-                                    </div>
+                                    <NumericRangeFilter
+                                      min={min}
+                                      max={max}
+                                      valueMin={ageState.valueMin}
+                                      valueMax={ageState.valueMax}
+                                      onRangeChange={(valueMin, valueMax) =>
+                                        updateAgeRange(facet, { valueMin, valueMax })
+                                      }
+                                      units={units}
+                                      unit={ageState.unit}
+                                      onUnitChange={(unit) => updateAgeRange(facet, { unit })}
+                                      unknownLabel="UNKNOWN AGES:"
+                                      unknownValue={ageState.unknownValue}
+                                      onUnknownChange={(unknownValue) =>
+                                        updateAgeRange(facet, { unknownValue })
+                                      }
+                                      onReset={() =>
+                                        setAgeRangeByFacetId((prev) => {
+                                          const { [facet.id]: _, ...rest } = prev
+                                          return rest
+                                        })
+                                      }
+                                      formatLabel={(n) => n.toLocaleString()}
+                                      accentColor={activeCategoryData?.color}
+                                    />
                                   )
                                 })()
                               ) : (
                                 <div className="border-t border-gray-20 divide-y divide-gray-20">
-                                  {options.map((option) => (
+                                  {visibleOptions.map((option) => (
                                     <FilterOptionItem
                                       key={option.id}
                                       option={option}
