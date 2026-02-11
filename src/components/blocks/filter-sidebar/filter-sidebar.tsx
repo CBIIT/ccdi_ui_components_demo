@@ -279,7 +279,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
 
             <div className="flex-1 overflow-y-auto bg-green-cool-5 py-1">
               {(activeCategoryData.searchEnabled || activeCategoryData.uploadEnabled) && (
-                <div className="bg-white space-y-2 pt-7 pb-3 px-3">
+                <div className="bg-white space-y-2 pt-7 pb-3 px-5">
                   {activeCategoryData.searchEnabled && (
                     <Search
                       placeholder={activeCategoryData.searchPlaceholder ?? searchPlaceholder}
@@ -318,119 +318,115 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
                         {facet.label}
                       </AccordionTrigger>
                       <AccordionContent className="py-0 px-0">
-                        <div className="border-t border-gray-20">
-                          {(
-                            <div className="px-5 py-4 space-y-3">
-                              {facet.searchEnabled && (
-                                <Search
-                                  placeholder={facet.searchPlaceholder ?? searchPlaceholder}
-                                  onSearch={(query) => setSearchForFacet(facet.id, query)}
-                                  iconOnly={true}
-                                  className="max-w-none border-gray-40"
-                                  inputProps={{ className: "max-w-none border-gray-40 bg-white" }}
-                                  buttonProps={{
-                                    className:
-                                      "bg-teal-50 hover:bg-teal-70 active:bg-teal-80",
-                                  }}
+                        <div className="border-t border-gray-20 px-5 py-4 space-y-3">
+                          {facet.searchEnabled && (
+                            <Search
+                              placeholder={facet.searchPlaceholder ?? searchPlaceholder}
+                              onSearch={(query) => setSearchForFacet(facet.id, query)}
+                              iconOnly={true}
+                              className="max-w-none border-gray-40"
+                              inputProps={{ className: "max-w-none border-gray-40 bg-white" }}
+                              buttonProps={{
+                                className:
+                                  "bg-teal-50 hover:bg-teal-70 active:bg-teal-80",
+                              }}
+                            />
+                          )}
+
+                          {facet.expandedDisplayEnabled && (
+                            <Button
+                              type="button"
+                              variant="secondary"
+                              size="sm"
+                              className="w-full flex items-center justify-between"
+                            >
+                              <span>VIEW EXPANDED DISPLAY</span>
+                              <Badge
+                                variant="secondary"
+                                className="min-w-10 justify-center rounded-sm bg-teal-60 px-2 py-0.5 text-sm text-white hover:bg-teal-80"
+                              >
+                                {(facet.expandedCount ?? visibleOptions.length).toLocaleString()}
+                              </Badge>
+                            </Button>
+                          )}
+
+                          {facet.sortEnabled && (
+                            <div className="flex items-center justify-between gap-2">
+                              <Icon icon="sort_arrow" size="sm" className="h-4 w-4" />
+                              <Button
+                                type="button"
+                                variant="link"
+                                size="sm"
+                                className={cn(
+                                  "no-underline !p-0 inline-flex items-center gap-2 text-gray-60 hover:text-gray-90",
+                                  getSortModeForFacet(facet.id) === "alpha" && "text-gray-90 font-semibold"
+                                )}
+                                onClick={() => setSortModeForFacet(facet.id, "alpha")}
+                              >
+                                Sort Alphabetically
+                              </Button>
+                              <Button
+                                type="button"
+                                variant="link"
+                                size="sm"
+                                className={cn(
+                                  "no-underline !p-0 inline-flex items-center gap-2 text-gray-60 hover:text-gray-90",
+                                  getSortModeForFacet(facet.id) === "count" && "text-gray-90 font-semibold"
+                                )}
+                                onClick={() => setSortModeForFacet(facet.id, "count")}
+                              >
+                                Sort by Count
+                              </Button>
+                            </div>
+                          )}
+
+                          {facet.ageEnabled ? (
+                            (() => {
+                              const min = facet.ageConfig?.min ?? 0
+                              const max = facet.ageConfig?.max ?? 16217
+                              const units = facet.ageConfig?.units ?? [
+                                { value: "days", label: "DAYS" },
+                                { value: "years", label: "YEARS" },
+                              ]
+                              const ageState = getAgeRangeState(facet)
+                              return (
+                                <NumericRangeFilter
+                                  min={min}
+                                  max={max}
+                                  valueMin={ageState.valueMin}
+                                  valueMax={ageState.valueMax}
+                                  onRangeChange={(valueMin, valueMax) =>
+                                    updateAgeRange(facet, { valueMin, valueMax })
+                                  }
+                                  units={units}
+                                  unit={ageState.unit}
+                                  onUnitChange={(unit) => updateAgeRange(facet, { unit })}
+                                  unknownLabel="UNKNOWN AGES:"
+                                  unknownValue={ageState.unknownValue}
+                                  onUnknownChange={(unknownValue) =>
+                                    updateAgeRange(facet, { unknownValue })
+                                  }
+                                  onReset={() =>
+                                    setAgeRangeByFacetId((prev) => {
+                                      const { [facet.id]: _, ...rest } = prev
+                                      return rest
+                                    })
+                                  }
+                                  formatLabel={(n) => n.toLocaleString()}
+                                  accentColor={activeCategoryData?.color}
                                 />
-                              )}
-
-                              {facet.expandedDisplayEnabled && (
-                                <Button
-                                  type="button"
-                                  variant="secondary"
-                                  size="sm"
-                                  className="w-full flex items-center justify-between"
-                                >
-                                  <span>VIEW EXPANDED DISPLAY</span>
-                                  <Badge
-                                    variant="secondary"
-                                    className="min-w-10 justify-center rounded-sm bg-teal-60 px-2 py-0.5 text-sm text-white hover:bg-teal-80"
-                                  >
-                                    {(facet.expandedCount ?? visibleOptions.length).toLocaleString()}
-                                  </Badge>
-                                </Button>
-                              )}
-
-                              {facet.sortEnabled && (
-                                <div className="flex items-center justify-between gap-2">
-                                  <Icon icon="sort_arrow" size="sm" className="h-4 w-4" />
-                                  <Button
-                                    type="button"
-                                    variant="link"
-                                    size="sm"
-                                    className={cn(
-                                      "no-underline !p-0 inline-flex items-center gap-2 text-gray-60 hover:text-gray-90",
-                                      getSortModeForFacet(facet.id) === "alpha" && "text-gray-90 font-semibold"
-                                    )}
-                                    onClick={() => setSortModeForFacet(facet.id, "alpha")}
-                                  >
-                                    Sort Alphabetically
-                                  </Button>
-                                  <Button
-                                    type="button"
-                                    variant="link"
-                                    size="sm"
-                                    className={cn(
-                                      "no-underline !p-0 inline-flex items-center gap-2 text-gray-60 hover:text-gray-90",
-                                      getSortModeForFacet(facet.id) === "count" && "text-gray-90 font-semibold"
-                                    )}
-                                    onClick={() => setSortModeForFacet(facet.id, "count")}
-                                  >
-                                    Sort by Count
-                                  </Button>
-                                </div>
-                              )}
-
-                              {facet.ageEnabled ? (
-                                (() => {
-                                  const min = facet.ageConfig?.min ?? 0
-                                  const max = facet.ageConfig?.max ?? 16217
-                                  const units = facet.ageConfig?.units ?? [
-                                    { value: "days", label: "DAYS" },
-                                    { value: "years", label: "YEARS" },
-                                  ]
-                                  const ageState = getAgeRangeState(facet)
-                                  return (
-                                    <NumericRangeFilter
-                                      min={min}
-                                      max={max}
-                                      valueMin={ageState.valueMin}
-                                      valueMax={ageState.valueMax}
-                                      onRangeChange={(valueMin, valueMax) =>
-                                        updateAgeRange(facet, { valueMin, valueMax })
-                                      }
-                                      units={units}
-                                      unit={ageState.unit}
-                                      onUnitChange={(unit) => updateAgeRange(facet, { unit })}
-                                      unknownLabel="UNKNOWN AGES:"
-                                      unknownValue={ageState.unknownValue}
-                                      onUnknownChange={(unknownValue) =>
-                                        updateAgeRange(facet, { unknownValue })
-                                      }
-                                      onReset={() =>
-                                        setAgeRangeByFacetId((prev) => {
-                                          const { [facet.id]: _, ...rest } = prev
-                                          return rest
-                                        })
-                                      }
-                                      formatLabel={(n) => n.toLocaleString()}
-                                      accentColor={activeCategoryData?.color}
-                                    />
-                                  )
-                                })()
-                              ) : (
-                                <div className="border-t border-gray-20 divide-y divide-gray-20">
-                                  {visibleOptions.map((option) => (
-                                    <FilterOptionItem
-                                      key={option.id}
-                                      option={option}
-                                      isSelected={selectedFilters.includes(option.id)}
-                                      onChange={(isSelected) => onFilterChange(option.id, isSelected)}
-                                    />
-                                  ))}
-                                </div>
-                              )}
+                              )
+                            })()
+                          ) : (
+                            <div className="border-t border-gray-20 divide-y divide-gray-20">
+                              {visibleOptions.map((option) => (
+                                <FilterOptionItem
+                                  key={option.id}
+                                  option={option}
+                                  isSelected={selectedFilters.includes(option.id)}
+                                  onChange={(isSelected) => onFilterChange(option.id, isSelected)}
+                                />
+                              ))}
                             </div>
                           )}
                         </div>
