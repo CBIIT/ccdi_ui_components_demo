@@ -1,138 +1,68 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { FilterSidebar, FilterCategory } from "@/components/blocks/filter-sidebar"
-
-// Sample data for the filter sidebar
-const sampleCategories: FilterCategory[] = [
-  {
-    id: "diagnosis",
-    label: "DIAGNOSIS",
-    color: "teal",
-    isActive: true,
-    children: [
-      { id: "abdominal-fibromatosis", label: "Abdominal fibromatosis", count: 8 },
-      { id: "acinar-cell-carcinoma", label: "Acinar cell carcinoma", count: 10 },
-      { id: "acute-erythroid-leukemia", label: "Acute erythroid leukemia", count: 3 },
-      { id: "acute-leukemia-nos", label: "Acute leukemia, NOS", count: 90 },
-      { id: "acute-leukemias-ambiguous", label: "Acute Leukemias of Ambiguous Lineage", count: 116 },
-      { id: "acute-lymphoblastic-leukemia", label: "Acute Lymphoblastic Leukemia, NOS", count: 1007 },
-      { id: "acute-megakaryoblastic-leukemia", label: "Acute megakaryoblastic leukemia", count: 4 },
-      { id: "acute-monocytic-leukemia", label: "Acute monocytic leukemia", count: 7 },
-    ]
-  },
-  {
-    id: "demographics",
-    label: "DEMOGRAPHICS",
-    color: "violet",
-    children: [
-      { id: "age-group-1", label: "0-5 years", count: 234 },
-      { id: "age-group-2", label: "6-12 years", count: 456 },
-      { id: "age-group-3", label: "13-18 years", count: 789 },
-    ]
-  },
-  {
-    id: "treatment",
-    label: "TREATMENT",
-    color: "orange",
-    children: [
-      { id: "chemotherapy", label: "Chemotherapy", count: 567 },
-      { id: "radiation", label: "Radiation Therapy", count: 234 },
-      { id: "surgery", label: "Surgery", count: 345 },
-    ]
-  },
-  {
-    id: "treatment-response",
-    label: "TREATMENT RESPONSE",
-    color: "red",
-    children: [
-      { id: "complete-response", label: "Complete Response", count: 123 },
-      { id: "partial-response", label: "Partial Response", count: 89 },
-      { id: "no-response", label: "No Response", count: 45 },
-    ]
-  },
-  {
-    id: "survival",
-    label: "SURVIVAL",
-    color: "blue",
-    children: [
-      { id: "alive", label: "Alive", count: 678 },
-      { id: "deceased", label: "Deceased", count: 234 },
-    ]
-  },
-  {
-    id: "samples",
-    label: "SAMPLES",
-    color: "dark-blue",
-    children: [
-      { id: "blood-sample", label: "Blood Sample", count: 456 },
-      { id: "tissue-sample", label: "Tissue Sample", count: 234 },
-      { id: "bone-marrow", label: "Bone Marrow", count: 123 },
-    ]
-  },
-  {
-    id: "data-category",
-    label: "DATA CATEGORY",
-    color: "green",
-    children: [
-      { id: "clinical-data", label: "Clinical Data", count: 789 },
-      { id: "genomic-data", label: "Genomic Data", count: 456 },
-      { id: "imaging-data", label: "Imaging Data", count: 234 },
-    ]
-  },
-  {
-    id: "study",
-    label: "STUDY",
-    color: "purple",
-    children: [
-      { id: "study-1", label: "Study A", count: 123 },
-      { id: "study-2", label: "Study B", count: 234 },
-      { id: "study-3", label: "Study C", count: 345 },
-    ]
-  },
-  {
-    id: "sequencing-library",
-    label: "SEQUENCING LIBRARY",
-    color: "teal",
-    selectedCount: 2,
-    children: [
-      { id: "rna-seq", label: "RNA-Seq", count: 234 },
-      { id: "wgs", label: "Whole Genome Sequencing", count: 123 },
-      { id: "wes", label: "Whole Exome Sequencing", count: 89 },
-    ]
-  }
-]
+import * as React from "react";
+import { FilterSidebar } from "@/components/blocks/filter-sidebar/filter-sidebar";
+import { sampleCategories } from "@/components/blocks/filter-sidebar/data";
+import { BarChartCard } from "./components/bar-chart-card";
+import { LineChartCard } from "./components/line-chart-card";
+import { ComposedChartCard } from "./components/composed-chart-card";
+import { PieChartCard } from "./components/pie-chart-card";
+import { AreaChartCard } from "./components/area-chart-card";
+import { HorizontalBarChartCard } from "./components/horizontal-bar-chart-card";
 
 export default function Sidebar() {
-  const [selectedFilters, setSelectedFilters] = React.useState<string[]>([])
+  const [selectedFilters, setSelectedFilters] = React.useState<string[]>([]);
 
   const handleFilterChange = (filterId: string, isSelected: boolean) => {
-    setSelectedFilters(prev => 
-      isSelected 
-        ? [...prev, filterId]
-        : prev.filter(id => id !== filterId)
-    )
-  }
+    setSelectedFilters((prev) =>
+      isSelected ? [...prev, filterId] : prev.filter((id) => id !== filterId),
+    );
+  };
 
   const handleClearAll = () => {
-    setSelectedFilters([])
-  }
+    setSelectedFilters([]);
+  };
 
   const handleSearch = (query: string) => {
-    console.log("Search query:", query)
+    console.log("Search query:", query);
     // Implement search logic here
-  }
+  };
 
   return (
     <div className="h-screen">
+      <h1 className="sr-only">Filter Sidebar</h1>
       <FilterSidebar
         categories={sampleCategories}
         selectedFilters={selectedFilters}
         onFilterChange={handleFilterChange}
         onClearAll={handleClearAll}
         onSearch={handleSearch}
-        searchPlaceholder="e.g. Sarcoma/Neoplasm"
-      />
+      >
+        {/* Dashboard Content */}
+        <>
+          <h1 className="font-bold font-merriweather text-3xl mb-8">
+            Dashboard
+          </h1>
+
+          {selectedFilters.length > 0 && (
+            <div className="mb-6 p-4 bg-blue-5 border border-blue-40 rounded">
+              <p className="text-sm text-gray-90">
+                <span className="font-bold">{selectedFilters.length}</span>{" "}
+                filter(s) active
+              </p>
+            </div>
+          )}
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            <PieChartCard />
+            <LineChartCard />
+            <BarChartCard />
+            <AreaChartCard />
+            <HorizontalBarChartCard />
+            <ComposedChartCard />
+          </div>
+        </>
+      </FilterSidebar>
     </div>
   );
 }
