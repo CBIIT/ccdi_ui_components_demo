@@ -1,121 +1,121 @@
 import type { ChartConfig } from "@/components/charts/chart"
 
-// Pie Chart Data & Config
-export const chartBrowserData = [
-  { browser: "Chrome", visitors: 275, fill: "var(--color-blue-60v)" },
-  { browser: "Safari", visitors: 200, fill: "var(--color-cyan-30v)" },
-  { browser: "Firefox", visitors: 187, fill: "var(--color-orange-40v)" },
-  { browser: "Edge", visitors: 173, fill: "var(--color-green-cool-40v)" },
-  { browser: "Other", visitors: 90, fill: "var(--color-gray-30)" },
+// Pie Chart - Participant distribution by race/ethnicity
+export const chartRaceData = [
+  { race: "White", participants: 275, fill: "var(--color-navy-60v)" },
+  { race: "Black or African American", participants: 200, fill: "var(--color-teal-20)" },
+  { race: "Asian", participants: 187, fill: "var(--color-teal-50)" },
+  { race: "Hispanic or Latino", participants: 173, fill: "var(--color-indigo-30)" },
+  { race: "Other", participants: 90, fill: "var(--color-gray-20)" },
 ]
 
-export const chartBrowserConfig: ChartConfig = {
-  visitors: {
-    label: "Visitors",
+export const chartRaceConfig: ChartConfig = {
+  participants: {
+    label: "Participants",
   },
-  chrome: {
-    label: "Chrome",
-    color: "var(--color-blue-60v)",
+  White: {
+    label: "White",
+    color: "var(--color-navy-60v)",
   },
-  safari: {
-    label: "Safari",
-    color: "var(--color-cyan-30v)",
+  "Black or African American": {
+    label: "Black or African American",
+    color: "var(--color-teal-20)",
   },
-  firefox: {
-    label: "Firefox",
-    color: "var(--color-orange-40v)",
+  Asian: {
+    label: "Asian",
+    color: "var(--color-teal-50)",
   },
-  edge: {
-    label: "Edge",
-    color: "var(--color-green-cool-40v)",
+  "Hispanic or Latino": {
+    label: "Hispanic or Latino",
+    color: "var(--color-indigo-30)",
   },
-  other: {
+  Other: {
     label: "Other",
-    color: "var(--color-gray-30)",
+    color: "var(--color-gray-20)",
   },
 }
 
-// Line Chart Data & Config
-export const chartSalesData = [
-  { month: "Jan", sales: 186 },
-  { month: "Feb", sales: 305 },
-  { month: "Mar", sales: 237 },
-  { month: "Apr", sales: 273 },
-  { month: "May", sales: 209 },
-  { month: "Jun", sales: 214 },
+// Line Chart - Monthly enrollment trend
+export const chartEnrollmentData = [
+  { month: "Jan", participants: 186 },
+  { month: "Feb", participants: 305 },
+  { month: "Mar", participants: 237 },
+  { month: "Apr", participants: 273 },
+  { month: "May", participants: 209 },
+  { month: "Jun", participants: 214 },
 ]
 
-export const chartSalesConfig: ChartConfig = {
-  sales: {
-    label: "Sales",
-    color: "var(--color-blue-60v)",
+export const chartEnrollmentConfig: ChartConfig = {
+  participants: {
+    label: "Participants Enrolled",
+    color: "var(--color-navy-60v)",
   },
 }
 
-// Bar Chart Data & Config
-export const chartRevenueData = [
-  { product: "Product A", revenue: 1200 },
-  { product: "Product B", revenue: 1900 },
-  { product: "Product C", revenue: 3000 },
-  { product: "Product D", revenue: 2100 },
-  { product: "Product E", revenue: 1800 },
+// Bar Chart - Participants by cancer type
+export const chartDiagnosisData = [
+  { diagnosisType: "Sarcoma", participants: 1200 },
+  { diagnosisType: "Carcinoma", participants: 1900 },
+  { diagnosisType: "Leukemia", participants: 3000 },
+  { diagnosisType: "Lymphoma", participants: 2100 },
+  { diagnosisType: "CNS Tumor", participants: 1800 },
 ]
 
-export const chartRevenueConfig: ChartConfig = {
-  revenue: {
-    label: "Revenue",
-    color: "var(--color-cyan-30v)",
+export const chartDiagnosisConfig: ChartConfig = {
+  participants: {
+    label: "Participants",
+    color: "var(--color-teal-50)",
   },
 }
 
-// Area Chart Data & Config
-export const chartUsersData = [
-  { week: "Week 1", users: 400 },
-  { week: "Week 2", users: 300 },
-  { week: "Week 3", users: 500 },
-  { week: "Week 4", users: 450 },
-  { week: "Week 5", users: 600 },
-  { week: "Week 6", users: 550 },
+// Area Chart - Cumulative enrollment over time
+export const chartCumulativeData = [
+  { week: "Week 1", participants: 400 },
+  { week: "Week 2", participants: 700 },
+  { week: "Week 3", participants: 1200 },
+  { week: "Week 4", participants: 1650 },
+  { week: "Week 5", participants: 2250 },
+  { week: "Week 6", participants: 2800 },
 ]
 
-export const chartUsersConfig: ChartConfig = {
-  users: {
-    label: "Active Users",
-    color: "var(--color-orange-40v)",
+export const chartCumulativeConfig: ChartConfig = {
+  participants: {
+    label: "Cumulative Participants",
+    color: "var(--color-red-50v)",
   },
 }
 
-// Horizontal Bar Chart Data & Config
-export const chartPerformanceData = [
-  { region: "North", performance: 85 },
-  { region: "South", performance: 92 },
-  { region: "East", performance: 78 },
-  { region: "West", performance: 88 },
-  { region: "Central", performance: 95 },
+// Horizontal Bar Chart - Participants by age group
+export const chartAgeData = [
+  { ageGroup: "0–5 years", participants: 512 },
+  { ageGroup: "6–12 years", participants: 892 },
+  { ageGroup: "13–18 years", participants: 654 },
+  { ageGroup: "19–25 years", participants: 445 },
+  { ageGroup: "26+ years", participants: 321 },
 ]
 
-export const chartPerformanceConfig: ChartConfig = {
-  performance: {
-    label: "Performance Score",
-    color: "var(--color-green-cool-40v)",
+export const chartAgeConfig: ChartConfig = {
+  participants: {
+    label: "Participants",
+    color: "var(--color-golden-10v)",
   },
 }
 
-// Composed Chart Data & Config (Bar + Line)
-export const chartMetricsData = [
-  { period: "Q1", revenue: 1200, profit: 300 },
-  { period: "Q2", revenue: 1900, profit: 450 },
-  { period: "Q3", revenue: 3000, profit: 600 },
-  { period: "Q4", revenue: 2100, profit: 550 },
+// Composed Chart - Enrollment and specimens by quarter
+export const chartStudyData = [
+  { quarter: "Q1", participants: 1200, specimens: 300 },
+  { quarter: "Q2", participants: 1900, specimens: 450 },
+  { quarter: "Q3", participants: 3000, specimens: 600 },
+  { quarter: "Q4", participants: 2100, specimens: 550 },
 ]
 
-export const chartMetricsConfig: ChartConfig = {
-  revenue: {
-    label: "Revenue",
-    color: "var(--color-blue-60v)",
+export const chartStudyConfig: ChartConfig = {
+  participants: {
+    label: "Participants Enrolled",
+    color: "var(--color-navy-60v)",
   },
-  profit: {
-    label: "Profit",
-    color: "var(--color-cyan-30v)",
+  specimens: {
+    label: "Specimens Collected",
+    color: "var(--color-teal-20)",
   },
 }

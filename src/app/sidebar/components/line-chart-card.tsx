@@ -8,7 +8,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/charts/chart"
-import { chartSalesData, chartSalesConfig } from "../data/chart-data"
+import { chartEnrollmentData, chartEnrollmentConfig } from "../data/chart-data"
 
 export function LineChartCard() {
   return (
@@ -16,27 +16,27 @@ export function LineChartCard() {
       <CardHeader className="flex-row items-start space-y-0 pb-0">
         <div className="grid gap-1">
           <h2 className="font-bold font-merriweather text-lg">
-            Line Chart - Sales Trend
+            Line Chart - Enrollment Trend
           </h2>
           <p className="text-sm text-muted-foreground">
-            Monthly sales performance
+            Monthly participant enrollment
           </p>
         </div>
       </CardHeader>
       <CardContent className="flex flex-1 justify-center pb-0">
         <ChartContainer
-          config={chartSalesConfig}
+          config={chartEnrollmentConfig}
           className="mx-auto aspect-video w-full"
         >
-          <LineChart data={chartSalesData}>
+          <LineChart data={chartEnrollmentData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="month" />
             <YAxis />
             <ChartTooltip content={<ChartTooltipContent />} />
             <Line
               type="monotone"
-              dataKey="sales"
-              stroke="var(--color-blue-60v)"
+              dataKey="participants"
+              stroke="var(--color-navy-60v)"
               strokeWidth={2}
               dot={{ r: 4 }}
             />
@@ -45,7 +45,7 @@ export function LineChartCard() {
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="text-muted-foreground leading-none">
-          Track sales trends over time
+          Track enrollment trends over time
         </div>
       </CardFooter>
     </Card>

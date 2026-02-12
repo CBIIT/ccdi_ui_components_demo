@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { FilterSidebar } from "@/components/blocks/filter-sidebar/filter-sidebar";
+import { ActiveFiltersBanner } from "@/components/blocks/active-filters-banner";
 import { sampleCategories } from "@/components/blocks/filter-sidebar/data";
 import { BarChartCard } from "./components/bar-chart-card";
 import { LineChartCard } from "./components/line-chart-card";
@@ -44,14 +45,12 @@ export default function Sidebar() {
             Dashboard
           </h1>
 
-          {selectedFilters.length > 0 && (
-            <div className="mb-6 p-4 bg-blue-5 border border-blue-40 rounded">
-              <p className="text-sm text-gray-90">
-                <span className="font-bold">{selectedFilters.length}</span>{" "}
-                filter(s) active
-              </p>
-            </div>
-          )}
+          <ActiveFiltersBanner
+            selectedFilters={selectedFilters}
+            categories={sampleCategories}
+            onClear={handleClearAll}
+            className="mb-6"
+          />
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             <PieChartCard />
