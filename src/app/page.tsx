@@ -8,8 +8,14 @@ export default function Home() {
         <Link href="/sidebar" className="text-blue-500 hover:text-blue-700 text-2xl">
           Filter Sidebar Demo
         </Link>
+        <Link href="/charts" className="text-blue-500 hover:text-blue-700 text-2xl">
+          Charts Demo
+        </Link>
         <Link href="/tabbed-table" className="text-blue-500 hover:text-blue-700 text-2xl">
           Tabbed Table Demo
+        </Link>
+        <Link href="/complete-demo" className="text-blue-500 hover:text-blue-700 text-2xl">
+          Complete Demo
         </Link>
       </div>
     </div>
