@@ -1,9 +1,9 @@
-import { PieChartCard } from "../sidebar/components/pie-chart-card";
-import { LineChartCard } from "../sidebar/components/line-chart-card";
-import { BarChartCard } from "../sidebar/components/bar-chart-card";
-import { AreaChartCard } from "../sidebar/components/area-chart-card";
-import { HorizontalBarChartCard } from "../sidebar/components/horizontal-bar-chart-card";
-import { ComposedChartCard } from "../sidebar/components/composed-chart-card";
+import { PieChartCard } from "./components/pie-chart-card";
+import { LineChartCard } from "./components/line-chart-card";
+import { BarChartCard } from "./components/bar-chart-card";
+import { AreaChartCard } from "./components/area-chart-card";
+import { HorizontalBarChartCard } from "./components/horizontal-bar-chart-card";
+import { ComposedChartCard } from "./components/composed-chart-card";
 
 export default function ChartsPage() {
   return (

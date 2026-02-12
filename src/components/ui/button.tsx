@@ -7,8 +7,9 @@ const buttonVariants = cva(
     // Base layout and appearance
     "relative rounded font-semibold font-open-sans leading-none cursor-pointer inline-flex items-center justify-center gap-1",
 
-    // Focus states (subtle ring only on keyboard navigation)
-    "focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-60v focus-visible:ring-offset-2",
+    // Focus states
+    "focus:outline focus:outline-4 focus:outline-offset-4 focus:outline-blue-40v",
+    "focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-blue-40v",
 
     // Disabled states
     "aria-disabled:cursor-not-allowed aria-disabled:bg-gray-20 aria-disabled:text-gray-70",
@@ -33,7 +34,7 @@ const buttonVariants = cva(
         link: "text-blue-60v underline underline-offset-2 hover:text-blue-warm-70v !p-0 font-normal rounded-none disabled:text-gray-50 disabled:bg-transparent "
       },
       size: {
-        sm: "p-2 text-sm",
+        sm: "p-2 text-sm leading-3.5",
         default: "px-5 py-3",
         lg: "px-6 py-4 text-xl",
         icon: "size-9",
@@ -46,10 +47,25 @@ const buttonVariants = cva(
   }
 )
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof buttonVariants>
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean;
+  };
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+
+    const isAsChildProperlyUsed = asChild && React.isValidElement(props.children);
+    
+    if (isAsChildProperlyUsed) {
+      const child = React.Children.only(props.children) as React.ReactElement<React.HTMLAttributes<HTMLElement>>;
+      return React.cloneElement(child, {
+        className: cn(buttonVariants({ variant, size }), child.props.className, className),
+        ref,
+        ...props,
+      } as React.HTMLAttributes<HTMLElement>);
+    }
+
     return (
       <button
         className={cn(buttonVariants({ variant, size, className }))}

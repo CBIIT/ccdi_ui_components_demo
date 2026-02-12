@@ -8,7 +8,9 @@ import { Icon } from "./icon";
 const searchInputVariants = cva(
   cn(
     // Layout classes
-    "w-full max-w-lg border border-r-0 border-gray-60",
+    "w-full min-w-75 lg:min-w-55 border border-r-0 border-gray-60",
+    // Font classes
+    "font-open-sans text-gray-90 placeholder:text-gray-50",
     // Focus states
     "focus:outline focus:outline-offset-0 focus:outline-4 focus:outline-blue-40",
     // Invalid states
@@ -18,7 +20,7 @@ const searchInputVariants = cva(
     variants: {
       size: {
         default: "p-2 h-8 text-base",
-        large: "p-2 h-12 text-xl",
+        large: "p-2 h-10 text-xl",
       },
     },
     defaultVariants: {
@@ -28,12 +30,12 @@ const searchInputVariants = cva(
 );
 
 const searchButtonVariants = cva(
-  "rounded-r font-bold leading-none flex items-center justify-center text-white bg-blue-60 hover:bg-blue-warm-70 active:bg-blue-warm-80 focus:outline focus:outline-4 focus:outline-offset-4 focus:outline-blue-40",
+  "rounded-r font-open-sans font-semibold leading-none flex items-center justify-center text-white bg-cerulean-50 hover:bg-cerulean-70 active:bg-cerulean-80 focus:outline focus:outline-4 focus:outline-offset-4 focus:outline-blue-40",
   {
     variants: {
       size: {
         default: "px-4 h-8 text-base",
-        large: "px-8 h-12 text-xl",
+        large: "px-8 h-10 text-xl",
       },
       iconOnly: {
         true: "px-3",

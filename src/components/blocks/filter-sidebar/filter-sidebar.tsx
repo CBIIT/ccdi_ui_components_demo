@@ -61,7 +61,7 @@ const FilterCategoryButton: React.FC<{
             {hasSelection ? (
               <span
                 aria-hidden="true"
-                className="size-2 rounded-full bg-teal-10 ring-1 ring-white/30"
+                className="size-2 rounded-full bg-teal-30 ring-1 ring-white/30"
               />
             ) : null}
           </span>
@@ -257,7 +257,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
 
         <div className="p-4 border-t border-white/10">
           <div className="flex items-center gap-2 text-sm text-white/80 italic">
-            <span aria-hidden="true" className="size-2 rounded-full bg-teal-10" />
+            <span aria-hidden="true" className="size-2 rounded-full bg-teal-30" />
             denotes facet(s) selected
           </div>
         </div>
@@ -447,9 +447,9 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
           {children ? (
             children
           ) : (
-            <div className="text-center">
+            <div className="h-full flex flex-col items-center justify-center">
               <Icon icon="bookmark" size="lg" className="size-16 mx-auto mb-4" />
-              <p className="text-lg">Select a filter category to begin</p>
+              <p className="text-lg">Integrate other components here</p>
             </div>
           )}
         </div>
