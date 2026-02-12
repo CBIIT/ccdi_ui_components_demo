@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 const buttonVariants = cva(
   cn(
     // Base layout and appearance
-    "relative rounded font-semibold font-open-sans leading-none cursor-pointer",
+    "relative rounded font-semibold font-open-sans leading-none cursor-pointer inline-flex items-center justify-center gap-1",
 
     // Focus states
     "focus:outline focus:outline-4 focus:outline-offset-4 focus:outline-blue-40v",
