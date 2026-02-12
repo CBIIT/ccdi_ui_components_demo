@@ -55,7 +55,7 @@ const FilterCategoryButton: React.FC<{
     >
       <div className="w-full bg-gray-5 font-bold uppercase tracking-wide">
         <div className={cn("h-2 w-full", barClass)}></div>
-        <div className="flex items-center justify-between gap-3 py-4">
+        <div className="flex items-center justify-between gap-3 my-4 px-2">
           <span className="flex items-center">
             <span className="px-4 min-h-5 flex items-center justify-center">{category.label}</span>
             {hasSelection ? (
