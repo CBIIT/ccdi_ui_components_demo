@@ -8,7 +8,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/charts/chart"
-import { chartUsersData, chartUsersConfig } from "../data/chart-data"
+import { chartCumulativeData, chartCumulativeConfig } from "../data/chart-data"
 
 export function AreaChartCard() {
   return (
@@ -16,28 +16,28 @@ export function AreaChartCard() {
       <CardHeader className="flex-row items-start space-y-0 pb-0">
         <div className="grid gap-1">
           <h2 className="font-bold font-merriweather text-lg">
-            Area Chart - User Growth
+            Area Chart - Cumulative Enrollment
           </h2>
           <p className="text-sm text-muted-foreground">
-            Weekly active users
+            Total participants over study weeks
           </p>
         </div>
       </CardHeader>
       <CardContent className="flex flex-1 justify-center pb-0">
         <ChartContainer
-          config={chartUsersConfig}
+          config={chartCumulativeConfig}
           className="mx-auto aspect-video w-full"
         >
-          <AreaChart data={chartUsersData}>
+          <AreaChart data={chartCumulativeData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="week" />
             <YAxis />
             <ChartTooltip content={<ChartTooltipContent />} />
             <Area
               type="monotone"
-              dataKey="users"
-              stroke="var(--color-orange-40v)"
-              fill="var(--color-orange-40v)"
+              dataKey="participants"
+              stroke="var(--color-red-50v)"
+              fill="var(--color-red-50v)"
               fillOpacity={0.6}
             />
           </AreaChart>
@@ -45,7 +45,7 @@ export function AreaChartCard() {
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="text-muted-foreground leading-none">
-          Monitor user growth over time
+          Monitor cumulative enrollment over the study period
         </div>
       </CardFooter>
     </Card>
