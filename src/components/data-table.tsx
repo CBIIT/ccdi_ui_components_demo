@@ -220,17 +220,6 @@ export function DataTable<TRow>({
 
   const renderPaginationPanel = (panelSuffix: string) => (
     <div className="flex flex-wrap items-center justify-end gap-4 font-public-sans text-base text-gray-90">
-      <button
-        type="button"
-        className="px-4 py-2 bg-[#3d4551] text-white font-public-sans font-normal rounded hover:bg-[#2d3441] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-60v focus-visible:ring-offset-2"
-        onClick={() => {
-          // Sample button action - customize as needed
-          console.log('Sample button clicked');
-        }}
-        aria-label="Sample action button"
-      >
-        Sample
-      </button>
       <label htmlFor={`data-table-page-size${idSuffix}${panelSuffix}`} className="text-gray-90">
         Results per Page:
       </label>
@@ -301,6 +290,19 @@ export function DataTable<TRow>({
 
   return (
     <div className={cn("w-full", className)}>
+      <div className="pb-3 mb-3 flex justify-end">
+        <button
+          type="button"
+          className="px-6 py-3 bg-[#3d4551] text-white font-public-sans font-bold text-base tracking-wide uppercase rounded hover:bg-[#2d3441] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-60v focus-visible:ring-offset-2"
+          onClick={() => {
+            // Sample button action - customize as needed
+            console.log('Sample button clicked');
+          }}
+          aria-label="Sample action button"
+        >
+          Sample Action
+        </button>
+      </div>
       <div className="pb-3 mb-0 border-b border-gray-30">
         {renderPaginationPanel("")}
       </div>
@@ -387,6 +389,19 @@ export function DataTable<TRow>({
             })}
           </TableBody>
         </Table>
+      </div>
+      <div className="pt-3 mt-3 flex justify-end">
+        <button
+          type="button"
+          className="px-6 py-3 bg-[#3d4551] text-white font-public-sans font-bold text-base tracking-wide uppercase rounded hover:bg-[#2d3441] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-60v focus-visible:ring-offset-2"
+          onClick={() => {
+            // Sample button action - customize as needed
+            console.log('Sample button clicked');
+          }}
+          aria-label="Sample action button"
+        >
+          Sample Action
+        </button>
       </div>
       <div className="pt-3 mt-0 border-t border-gray-30">
         {renderPaginationPanel("-bottom")}
