@@ -7,9 +7,8 @@ const buttonVariants = cva(
     // Base layout and appearance
     "relative rounded font-semibold font-open-sans leading-none cursor-pointer inline-flex items-center justify-center gap-1",
 
-    // Focus states
-    "focus:outline focus:outline-4 focus:outline-offset-4 focus:outline-blue-40v",
-    "focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-blue-40v",
+    // Focus states (subtle ring only on keyboard navigation)
+    "focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-60v focus-visible:ring-offset-2",
 
     // Disabled states
     "aria-disabled:cursor-not-allowed aria-disabled:bg-gray-20 aria-disabled:text-gray-70",

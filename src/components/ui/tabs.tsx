@@ -101,7 +101,7 @@ const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
           "inline-flex items-center justify-center gap-1.5 px-4 py-3 text-base font-medium whitespace-nowrap transition-all",
           "border-t-4 border-transparent",
           "hover:bg-gray-5 hover:text-blue-60v",
-          "focus:outline focus:outline-4 focus:outline-blue-40v focus:z-10",
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-60v focus-visible:ring-inset focus-visible:z-10",
           "disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed",
           isActive
             ? "border-blue-60v text-blue-60v bg-gray-5"

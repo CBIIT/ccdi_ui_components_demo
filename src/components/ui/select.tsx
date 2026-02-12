@@ -17,6 +17,8 @@ export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElemen
   invalid?: boolean;
   /** Marks the select as having a success state */
   success?: boolean;
+  /** Use compact sizing (smaller padding and text) for tight layouts like pagination */
+  compact?: boolean;
   /** Custom className for additional styling */
   className?: string;
   /** ARIA label for accessibility */
@@ -37,6 +39,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       required = false,
       invalid = false,
       success = false,
+      compact = false,
       "aria-label": ariaLabel,
       "aria-labelledby": ariaLabelledby,
       "aria-describedby": ariaDescribedby,
@@ -46,7 +49,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     ref
   ) => {
     return (
-      <div className="relative flex items-center mt-2">
+      <div className={cn("relative flex items-center", compact ? "mt-0" : "mt-2")}>
         <select
           id={id}
           name={name}
@@ -59,9 +62,9 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           className={cn(
             // Base styling
             "peer opacity-100 appearance-none w-full",
-            "font-public-sans text-base text-gray-90",
+            "font-public-sans text-gray-90",
             // Size and spacing
-            "p-2 pr-8",
+            compact ? "py-1.5 px-2 pr-7 text-sm min-h-0" : "p-2 pr-8 text-base",
             // Background and border
             "bg-white border border-gray-60 rounded-none",
             // Focus states
@@ -82,7 +85,10 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         </select>
         <div
           aria-hidden="true"
-          className="select-none pointer-events-none h-full absolute right-0 whitespace-nowrap px-2 flex items-center text-gray-90 peer-disabled:text-gray-70"
+          className={cn(
+            "select-none pointer-events-none h-full absolute right-0 whitespace-nowrap flex items-center text-gray-90 peer-disabled:text-gray-70",
+            compact ? "px-1.5" : "px-2"
+          )}
         >
           <UnfoldMoreIcon size="xs" />
         </div>
