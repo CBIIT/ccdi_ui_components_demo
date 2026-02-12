@@ -20,6 +20,7 @@ type FilterSidebarProps = {
   onSearch: (query: string) => void;
   searchPlaceholder?: string;
   className?: string;
+  children?: React.ReactNode;
 }
 
 const colorToBarClass: Record<string, string> = {
@@ -98,7 +99,8 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
   onClearAll,
   onSearch,
   searchPlaceholder = "e.g. Sarcoma/Neoplasm",
-  className
+  className,
+  children
 }) => {
   const [activeCategory, setActiveCategory] = React.useState<string | null>(() => {
     return categories[0]?.id ?? null
@@ -261,10 +263,11 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
         </div>
       </aside>
 
-      {/* Right panel */}
-      <section className="w-80 bg-gray-5 flex flex-col min-w-0">
-        {activeCategoryData ? (
-          <>
+      {/* Right area - flex container: category panel (when active) + placeholder always visible */}
+      <section className="flex-1 flex min-w-0 bg-gray-5">
+        {/* Category panel - only when active, fixed w-80 */}
+        {activeCategoryData && (
+          <div className="w-80 shrink-0 flex flex-col border-r border-gray-20 bg-gray-5">
             <div className="flex items-center justify-end bg-green-cool-5 px-4 py-3">
               <Button
                 type="button"
@@ -436,15 +439,20 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
                 })}
               </Accordion>
             </div>
-          </>
-        ) : (
-          <div className="flex items-center justify-center h-full text-gray-60">
+          </div>
+        )}
+
+        {/* Placeholder/children - always visible, fills remaining space */}
+        <div className="w-full p-6">
+          {children ? (
+            children
+          ) : (
             <div className="text-center">
               <Icon icon="bookmark" size="lg" className="size-16 mx-auto mb-4" />
               <p className="text-lg">Select a filter category to begin</p>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </section>
     </div>
   )
