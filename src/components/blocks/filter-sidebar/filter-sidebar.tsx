@@ -443,7 +443,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
         )}
 
         {/* Placeholder/children - always visible, fills remaining space */}
-        <div className="w-full p-6">
+        <div className="w-full overflow-y-auto p-6">
           {children ? (
             children
           ) : (
