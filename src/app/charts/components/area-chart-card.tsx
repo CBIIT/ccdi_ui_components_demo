@@ -1,4 +1,4 @@
-"use client"
+  "use client"
 
 import * as React from "react"
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid } from "recharts"

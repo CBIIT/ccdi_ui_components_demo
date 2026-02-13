@@ -2,14 +2,8 @@
 
 import * as React from "react";
 import { FilterSidebar } from "@/components/blocks/filter-sidebar/filter-sidebar";
-import { ActiveFiltersBanner } from "@/components/blocks/active-filters-banner";
 import { sampleCategories } from "@/components/blocks/filter-sidebar/data";
-import { BarChartCard } from "./components/bar-chart-card";
-import { LineChartCard } from "./components/line-chart-card";
-import { ComposedChartCard } from "./components/composed-chart-card";
-import { PieChartCard } from "./components/pie-chart-card";
-import { AreaChartCard } from "./components/area-chart-card";
-import { HorizontalBarChartCard } from "./components/horizontal-bar-chart-card";
+import { BackToHomepage } from "@/components/back-to-homepage";
 
 export default function Sidebar() {
   const [selectedFilters, setSelectedFilters] = React.useState<string[]>([]);
@@ -31,6 +25,7 @@ export default function Sidebar() {
 
   return (
     <div className="h-screen">
+      <BackToHomepage />
       <h1 className="sr-only">Filter Sidebar</h1>
       <FilterSidebar
         categories={sampleCategories}
@@ -38,30 +33,7 @@ export default function Sidebar() {
         onFilterChange={handleFilterChange}
         onClearAll={handleClearAll}
         onSearch={handleSearch}
-      >
-        {/* Dashboard Content */}
-        <>
-          <h1 className="font-bold font-merriweather text-3xl mb-8">
-            Dashboard
-          </h1>
-
-          <ActiveFiltersBanner
-            selectedFilters={selectedFilters}
-            categories={sampleCategories}
-            onClear={handleClearAll}
-            className="mb-6"
-          />
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            <PieChartCard />
-            <LineChartCard />
-            <BarChartCard />
-            <AreaChartCard />
-            <HorizontalBarChartCard />
-            <ComposedChartCard />
-          </div>
-        </>
-      </FilterSidebar>
+      />
     </div>
   );
 }

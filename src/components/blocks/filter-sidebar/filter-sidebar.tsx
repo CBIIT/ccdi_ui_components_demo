@@ -61,7 +61,7 @@ const FilterCategoryButton: React.FC<{
             {hasSelection ? (
               <span
                 aria-hidden="true"
-                className="size-2 rounded-full bg-teal-10 ring-1 ring-white/30"
+                className="size-2 rounded-full bg-teal-30 ring-1 ring-white/30"
               />
             ) : null}
           </span>
@@ -257,14 +257,14 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
 
         <div className="p-4 border-t border-white/10">
           <div className="flex items-center gap-2 text-sm text-white/80 italic">
-            <span aria-hidden="true" className="size-2 rounded-full bg-teal-10" />
+            <span aria-hidden="true" className="size-2 rounded-full bg-teal-30" />
             denotes facet(s) selected
           </div>
         </div>
       </aside>
 
       {/* Right area - flex container: category panel (when active) + placeholder always visible */}
-      <section className="flex-1 flex min-w-0 bg-gray-5">
+      <section className="flex-1 flex min-w-0 bg-gray-2">
         {/* Category panel - only when active, fixed w-80 */}
         {activeCategoryData && (
           <div className="w-80 shrink-0 flex flex-col border-r border-gray-20 bg-gray-5">
@@ -443,13 +443,13 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
         )}
 
         {/* Placeholder/children - always visible, fills remaining space */}
-        <div className="w-full overflow-y-auto p-6">
+        <div className="w-full overflow-y-auto">
           {children ? (
             children
           ) : (
-            <div className="text-center">
+            <div className="h-full flex flex-col items-center justify-center">
               <Icon icon="bookmark" size="lg" className="size-16 mx-auto mb-4" />
-              <p className="text-lg">Select a filter category to begin</p>
+              <p className="text-lg">Integrate other components here</p>
             </div>
           )}
         </div>

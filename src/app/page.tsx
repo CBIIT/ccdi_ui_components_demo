@@ -5,11 +5,20 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center h-screen">
       <h1 className="font-tahoma text-5xl font-bold text-center mb-10">CCDI UI Components Demo</h1>
       <div className="flex flex-col gap-4">
+        <Link href="/header-and-footer" className="text-blue-500 hover:text-blue-700 text-2xl">
+          Header and Footer
+        </Link>
         <Link href="/sidebar" className="text-blue-500 hover:text-blue-700 text-2xl">
-          Filter Sidebar Demo
+          Filter Sidebar
+        </Link>
+        <Link href="/charts" className="text-blue-500 hover:text-blue-700 text-2xl">
+          Charts
         </Link>
         <Link href="/tabbed-table" className="text-blue-500 hover:text-blue-700 text-2xl">
-          Tabbed Table Demo
+          Tabbed Table
+        </Link>
+        <Link href="/complete-demo" className="text-blue-500 hover:text-blue-700 text-2xl">
+          Complete Demo by <span className="font-extrabold">The Team</span>
         </Link>
       </div>
     </div>
