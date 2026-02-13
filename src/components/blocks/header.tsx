@@ -223,9 +223,9 @@ export default function NCIDSNavbar({
                 el.style.width = `${navContainerRef.current.offsetWidth}px`;
               }
             }}
-            className="fixed left-0 right-0 z-50 bg-cerulean-70 shadow-lg"
+            className="absolute left-0 right-0 z-50 bg-cerulean-70 shadow-lg"
           >
-            <div className="max-w-[87.5rem] mx-auto flex gap-2 px-8 py-8 pb-0 grid grid-cols-4">
+            <div className="max-w-[87.5rem] mx-auto flex gap-2 px-8 py-8 grid grid-cols-4">
               <div className="flex flex-col col-span-1">
                 <a
                   href={item.href}
