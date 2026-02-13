@@ -4,10 +4,12 @@ import { BarChartCard } from "./components/bar-chart-card";
 import { AreaChartCard } from "./components/area-chart-card";
 import { HorizontalBarChartCard } from "./components/horizontal-bar-chart-card";
 import { ComposedChartCard } from "./components/composed-chart-card";
+import { BackToHomepage } from "@/components/back-to-homepage";
 
 export default function ChartsPage() {
   return (
     <div className="p-8">
+      <BackToHomepage />
       <h1 className="font-bold font-merriweather text-3xl mb-8">
         Dashboard
       </h1>

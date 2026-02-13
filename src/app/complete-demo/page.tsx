@@ -16,6 +16,7 @@ import { USWDSFooter } from "@/components/blocks/footer";
 import { Banner } from "@/components/ui/banner";
 import { navItems } from "../header-and-footer/data/header-data";
 import { agencyInfo, contactInfo, navigation } from "../header-and-footer/data/footer-data";
+import { BackToHomepage } from "@/components/back-to-homepage";
 
 export default function CompleteDemoPage() {
   const [selectedFilters, setSelectedFilters] = React.useState<string[]>([]);
@@ -52,6 +53,7 @@ export default function CompleteDemoPage() {
         >
           {/* Dashboard Content */}
           <div className="px-6 pt-6">
+            <BackToHomepage />
             <ActiveFiltersBanner
               selectedFilters={selectedFilters}
               categories={sampleCategories}

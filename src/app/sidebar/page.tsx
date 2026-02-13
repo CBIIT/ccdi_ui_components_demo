@@ -3,6 +3,7 @@
 import * as React from "react";
 import { FilterSidebar } from "@/components/blocks/filter-sidebar/filter-sidebar";
 import { sampleCategories } from "@/components/blocks/filter-sidebar/data";
+import { BackToHomepage } from "@/components/back-to-homepage";
 
 export default function Sidebar() {
   const [selectedFilters, setSelectedFilters] = React.useState<string[]>([]);
@@ -24,6 +25,7 @@ export default function Sidebar() {
 
   return (
     <div className="h-screen">
+      <BackToHomepage />
       <h1 className="sr-only">Filter Sidebar</h1>
       <FilterSidebar
         categories={sampleCategories}
