@@ -16,7 +16,7 @@ export default function HeaderAndFooterPage() {
         <Icon icon="bookmark" size="lg" className="size-16 mx-auto mb-4" />
         <p className="text-lg">Integrate other components here</p>
       </div>
-      <USWDSFooter agencyInfo={agencyInfo} contactInfo={contactInfo} navigation={navigation} />
+      <USWDSFooter agencyInfo={agencyInfo} contactInfo={contactInfo} navigation={navigation} showNewsletter={true} />
     </>
   )
 }
