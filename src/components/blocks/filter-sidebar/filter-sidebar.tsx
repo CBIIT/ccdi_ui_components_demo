@@ -264,7 +264,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
       </aside>
 
       {/* Right area - flex container: category panel (when active) + placeholder always visible */}
-      <section className="flex-1 flex min-w-0 bg-gray-5">
+      <section className="flex-1 flex min-w-0 bg-gray-2">
         {/* Category panel - only when active, fixed w-80 */}
         {activeCategoryData && (
           <div className="w-80 shrink-0 flex flex-col border-r border-gray-20 bg-gray-5">
@@ -443,7 +443,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
         )}
 
         {/* Placeholder/children - always visible, fills remaining space */}
-        <div className="w-full overflow-y-auto p-6">
+        <div className="w-full overflow-y-auto">
           {children ? (
             children
           ) : (

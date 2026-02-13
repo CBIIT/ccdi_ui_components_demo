@@ -1,591 +1,142 @@
 export const navItems=[
   {
-    hasSubmenu: true,
     href: '#',
-    id: 'current-section',
-    label: 'Current Section',
-    submenu: [
-      {
-        hasSubmenu: true,
-        href: '#',
-        id: 'current-section-header-1',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'current-section-submenu-1',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'current-section-submenu-2',
-            label: 'Navigationlink'
-          }
-        ]
-      },
-      {
-        hasSubmenu: true,
-        href: '#',
-        id: 'current-section-header-2',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'current-section-submenu-3',
-            label: 'A very long navigation link that goes onto twolines'
-          },
-          {
-            href: '#',
-            id: 'current-section-submenu-5',
-            label: 'A very long navigation link that goes onto twolines'
-          },
-          {
-            href: '#',
-            id: 'current-section-submenu-6',
-            label: 'Navigationlink'
-          }
-        ]
-      },
-      {
-        hasSubmenu: true,
-        href: '#',
-        id: 'current-section-header-3',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'current-section-submenu-7',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'current-section-submenu-8',
-            label: 'Navigationlink'
-          }
-        ]
-      },
-      {
-        hasSubmenu: true,
-        href: '#',
-        id: 'current-section-header-4',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'current-section-submenu-9',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'current-section-submenu-10',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'current-section-submenu-11',
-            label: 'A very long navigation link that goes onto twolines'
-          },
-          {
-            href: '#',
-            id: 'current-section-submenu-12',
-            label: 'Navigationlink'
-          }
-        ]
-      },
-      {
-        hasSubmenu: true,
-        href: '#',
-        id: 'current-section-header-5',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'current-section-submenu-13',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'current-section-submenu-14',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'current-section-submenu-15',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'current-section-submenu-16',
-            label: 'Navigationlink'
-          }
-        ]
-      },
-      {
-        hasSubmenu: true,
-        href: '#',
-        id: 'current-section-header-6',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'current-section-submenu-17',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'current-section-submenu-18',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'current-section-submenu-19',
-            label: 'A very long navigation link that goes onto twolines'
-          }
-        ]
-      }
-    ],
-    title: 'Explore Section'
+    id: 'home',
+    label: 'Home'
   },
   {
-    hasSubmenu: true,
     href: '#',
-    id: 'second-section',
-    label: 'Second Section',
+    id: 'explore',
+    label: 'Explore'
+  },
+  {
+    href: '#',
+    id: 'studies',
+    label: 'Studies'
+  },
+  {
+    href: '#',
+    id: 'cohort-analyzer',
+    label: 'Cohort Analyzer'
+  },
+  {
+    href: '#',
+    id: 'resources',
+    label: 'Resources',
+    hasSubmenu: true,
     submenu: [
       {
-        hasSubmenu: true,
         href: '#',
-        id: 'second-section-header-1',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'second-section-submenu-1',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'second-section-submenu-2',
-            label: 'Navigationlink'
-          }
-        ]
+        id: 'ccdi-cbioportal',
+        label: 'CCDI cBioPortal'
       },
       {
-        hasSubmenu: true,
         href: '#',
-        id: 'second-section-header-2',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'second-section-submenu-3',
-            label: 'A very long navigation link that goes onto twolines'
-          },
-          {
-            href: '#',
-            id: 'second-section-submenu-4',
-            label: 'A very long navigation link that goes onto twolines'
-          },
-          {
-            href: '#',
-            id: 'second-section-submenu-5',
-            label: 'Navigationlink'
-          }
-        ]
+        id: 'ccdi-data-federation-resource',
+        label: 'CCDI Data Federation Resource'
       },
       {
-        hasSubmenu: true,
         href: '#',
-        id: 'second-section-header-3',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'second-section-submenu-6',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'second-section-submenu-7',
-            label: 'Navigationlink'
-          }
-        ]
+        id: 'ccdi-participant-index',
+        label: 'CCDI Participant Index'
       },
       {
-        hasSubmenu: true,
         href: '#',
-        id: 'second-section-header-4',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'second-section-submenu-8',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'second-section-submenu-9',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'second-section-submenu-10',
-            label: 'A very long navigation link that goes onto twolines'
-          },
-          {
-            href: '#',
-            id: 'second-section-submenu-11',
-            label: 'Navigationlink'
-          }
-        ]
+        id: 'childhood-cancer-clinical-data-commons',
+        label: 'Childhood Cancer Clinical Data Commons'
       },
       {
-        hasSubmenu: true,
         href: '#',
-        id: 'second-section-header-5',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'second-section-submenu-12',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'second-section-submenu-13',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'second-section-submenu-14',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'second-section-submenu-15',
-            label: 'Navigationlink'
-          }
-        ]
+        id: 'childhood-cancer-data-catalog',
+        label: 'Childhood Cancer Data Catalog'
       },
       {
-        hasSubmenu: true,
         href: '#',
-        id: 'second-section-header-6',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'second-section-submenu-16',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'second-section-submenu-17',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'second-section-submenu-18',
-            label: 'A very long navigation link that goes onto twolines'
-          }
-        ]
+        id: 'molecular-characterization-initiative',
+        label: 'Molecular Characterization Initiative'
+      },
+      {
+        href: '#',
+        id: 'molecular-targets-platform',
+        label: 'Molecular Targets Platform'
+      },
+      {
+        href: '#',
+        id: 'national-childhood-cancer-registry-explorer',
+        label: 'National Childhood Cancer Registry Explorer'
+      },
+      {
+        href: '#',
+        id: 'nccr-data-platform',
+        label: 'NCCR Data Platform'
+      },
+      {
+        href: '#',
+        id: 'tools',
+        label: 'Tools'
       }
     ]
   },
   {
     href: '#',
-    id: 'section-without-submenu',
-    label: 'Section without Submenu'
+    id: 'news',
+    label: 'News'
   },
   {
-    hasSubmenu: true,
     href: '#',
-    id: 'fourth-section',
-    label: 'Fourth Section',
+    id: 'about',
+    label: 'About',
+    hasSubmenu: true,
     submenu: [
       {
-        hasSubmenu: true,
         href: '#',
-        id: 'fourth-section-header-1',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'fourth-section-submenu-1',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fourth-section-submenu-2',
-            label: 'Navigationlink'
-          }
-        ]
+        id: 'about-ccdi-hub',
+        label: 'About CCDI Hub'
       },
       {
-        hasSubmenu: true,
         href: '#',
-        id: 'fourth-section-header-2',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'fourth-section-submenu-3',
-            label: 'A very long navigation link that goes onto twolines'
-          },
-          {
-            href: '#',
-            id: 'fourth-section-submenu-4',
-            label: 'A very long navigation link that goes onto twolines'
-          },
-          {
-            href: '#',
-            id: 'fourth-section-submenu-5',
-            label: 'Navigationlink'
-          }
-        ]
+        id: 'ccdi-data-ecosystem-and-ai-readiness',
+        label: 'CCDI Data Ecosystem and AI Readiness (PDF)'
       },
       {
-        hasSubmenu: true,
         href: '#',
-        id: 'fourth-section-header-3',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'fourth-section-submenu-6',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fourth-section-submenu-7',
-            label: 'Navigationlink'
-          }
-        ]
+        id: 'ccdi-data-model',
+        label: 'CCDI Data Model'
       },
       {
-        hasSubmenu: true,
         href: '#',
-        id: 'fourth-section-header-4',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'fourth-section-submenu-8',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fourth-section-submenu-9',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fourth-section-submenu-10',
-            label: 'A very long navigation link that goes onto twolines'
-          },
-          {
-            href: '#',
-            id: 'fourth-section-submenu-11',
-            label: 'Navigationlink'
-          }
-        ]
+        id: 'ccdi-data-submission-guide',
+        label: 'CCDI Data Submission Guide (PDF)'
       },
       {
-        hasSubmenu: true,
         href: '#',
-        id: 'fourth-section-header-5',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'fourth-section-submenu-12',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fourth-section-submenu-13',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fourth-section-submenu-14',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fourth-section-submenu-15',
-            label: 'Navigationlink'
-          }
-        ]
+        id: 'ccdi-data-usage-policies-and-terms',
+        label: 'CCDI Data Usage Policies and Terms'
       },
       {
-        hasSubmenu: true,
         href: '#',
-        id: 'fourth-section-header-6',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'fourth-section-submenu-16',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fourth-section-submenu-17',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fourth-section-submenu-18',
-            label: 'A very long navigation link that goes onto twolines'
-          }
-        ]
-      }
-    ]
-  },
-  {
-    hasSubmenu: true,
-    href: '#',
-    id: 'fifth-section',
-    label: 'Fifth Section',
-    submenu: [
-      {
-        hasSubmenu: true,
-        href: '#',
-        id: 'fifth-section-header-1',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'fifth-section-submenu-1',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fifth-section-submenu-2',
-            label: 'Navigationlink'
-          }
-        ]
+        id: 'ccdi-events-announcements',
+        label: 'CCDI Events Announcements'
       },
       {
-        hasSubmenu: true,
         href: '#',
-        id: 'fifth-section-header-2',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'fifth-section-submenu-3',
-            label: 'A very long navigation link that goes onto twolines'
-          },
-          {
-            href: '#',
-            id: 'fifth-section-submenu-4',
-            label: 'A very long navigation link that goes onto twolines'
-          },
-          {
-            href: '#',
-            id: 'fifth-section-submenu-5',
-            label: 'Navigationlink'
-          }
-        ]
+        id: 'ccdi-supported-publications',
+        label: 'CCDI-Supported Publications'
       },
       {
-        hasSubmenu: true,
         href: '#',
-        id: 'fifth-section-header-3',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'fifth-section-submenu-6',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fifth-section-submenu-7',
-            label: 'Navigationlink'
-          }
-        ]
+        id: 'hub-explore-dashboard-tutorial-video',
+        label: 'Hub Explore Dashboard Tutorial Video'
       },
       {
-        hasSubmenu: true,
         href: '#',
-        id: 'fifth-section-header-4',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'fifth-section-submenu-8',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fifth-section-submenu-9',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fifth-section-submenu-10',
-            label: 'A very long navigation link that goes onto twolines'
-          },
-          {
-            href: '#',
-            id: 'fifth-section-submenu-11',
-            label: 'Navigationlink'
-          }
-        ]
+        id: 'release-notes',
+        label: 'Release Notes'
       },
       {
-        hasSubmenu: true,
         href: '#',
-        id: 'fifth-section-header-5',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'fifth-section-submenu-12',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fifth-section-submenu-13',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fifth-section-submenu-14',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fifth-section-submenu-15',
-            label: 'Navigationlink'
-          }
-        ]
-      },
-      {
-        hasSubmenu: true,
-        href: '#',
-        id: 'fifth-section-header-6',
-        label: 'Section Header',
-        submenu: [
-          {
-            href: '#',
-            id: 'fifth-section-submenu-16',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fifth-section-submenu-17',
-            label: 'Navigationlink'
-          },
-          {
-            href: '#',
-            id: 'fifth-section-submenu-18',
-            label: 'A very long navigation link that goes onto twolines'
-          }
-        ]
+        id: 'user-guide',
+        label: 'User Guide'
       }
     ]
   }

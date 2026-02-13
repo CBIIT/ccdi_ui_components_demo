@@ -2,7 +2,7 @@ export const agencyInfo = {
   logo: '/NIHLogo.svg',
   logoAlt: 'Organization Logo',
   name: 'National Cancer Institute',
-  description: 'The National Cancer Institute is a part of the National Institutes of Health.'
+  // description: 'The National Cancer Institute is a part of the National Institutes of Health.'
 };
 
 export const contactInfo = {
@@ -35,44 +35,44 @@ export const navigation = {
       links: [
         {
           href: '#',
-          label: 'About this Website'
+          label: 'About CCDI Hub'
         },
         {
           href: '#',
-          label: 'en Español'
+          label: 'About CCDI'
         },
-        {
-          href: '#',
-          label: 'Reuse & Copyright'
-        },
-        {
-          href: '#',
-          label: 'Social Media'
-        }
-      ],
-      title: 'About'
-    },
-    {
-      links: [
         {
           href: '#',
           label: 'Contact Us'
         },
         {
           href: '#',
-          label: 'Publications'
-        },
-        {
-          href: '#',
-          label: 'Dictionary of Cancer Terms'
-        },
-        {
-          href: '#',
-          label: 'Find a Clinical Trial'
+          label: 'Release Notes'
         }
       ],
-      title: 'Resources'
+      title: 'About'
     },
+    // {
+    //   links: [
+    //     {
+    //       href: '#',
+    //       label: 'Contact Us'
+    //     },
+    //     {
+    //       href: '#',
+    //       label: 'Publications'
+    //     },
+    //     {
+    //       href: '#',
+    //       label: 'Dictionary of Cancer Terms'
+    //     },
+    //     {
+    //       href: '#',
+    //       label: 'Find a Clinical Trial'
+    //     }
+    //   ],
+    //   title: 'Resources'
+    // },
     {
       links: [
         {

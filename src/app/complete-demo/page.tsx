@@ -10,6 +10,12 @@ import { ComposedChartCard } from "../charts/components/composed-chart-card";
 import { PieChartCard } from "../charts/components/pie-chart-card";
 import { AreaChartCard } from "../charts/components/area-chart-card";
 import { HorizontalBarChartCard } from "../charts/components/horizontal-bar-chart-card";
+import { TabbedTableComponent } from "@/components/blocks/tabbed-table-component";
+import NCIDSNavbar from "@/components/blocks/header";
+import { USWDSFooter } from "@/components/blocks/footer";
+import { Banner } from "@/components/ui/banner";
+import { navItems } from "../header-and-footer/data/header-data";
+import { agencyInfo, contactInfo, navigation } from "../header-and-footer/data/footer-data";
 
 export default function CompleteDemoPage() {
   const [selectedFilters, setSelectedFilters] = React.useState<string[]>([]);
@@ -30,38 +36,45 @@ export default function CompleteDemoPage() {
   };
 
   return (
-    <div className="h-screen">
-      <h1 className="sr-only">Filter Sidebar</h1>
-      <FilterSidebar
-        categories={sampleCategories}
-        selectedFilters={selectedFilters}
-        onFilterChange={handleFilterChange}
-        onClearAll={handleClearAll}
-        onSearch={handleSearch}
-      >
-        {/* Dashboard Content */}
-        <>
-          <h1 className="font-bold font-merriweather text-3xl mb-8">
-            Dashboard
-          </h1>
+    <>
+      <Banner />
+      <NCIDSNavbar navItems={navItems} />
 
-          <ActiveFiltersBanner
-            selectedFilters={selectedFilters}
-            categories={sampleCategories}
-            onClear={handleClearAll}
-            className="mb-6"
-          />
+      <div className="h-screen">
+        <FilterSidebar
+          categories={sampleCategories}
+          selectedFilters={selectedFilters}
+          onFilterChange={handleFilterChange}
+          onClearAll={handleClearAll}
+          onSearch={handleSearch}
+        >
+          {/* Dashboard Content */}
+          <div className="px-6 pt-6">
+            <ActiveFiltersBanner
+              selectedFilters={selectedFilters}
+              categories={sampleCategories}
+              onClear={handleClearAll}
+              className="mb-6"
+            />
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            <PieChartCard />
-            <LineChartCard />
-            <BarChartCard />
-            <AreaChartCard />
-            <HorizontalBarChartCard />
-            <ComposedChartCard />
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              <PieChartCard />
+              <LineChartCard />
+              <BarChartCard />
+              <AreaChartCard />
+              <HorizontalBarChartCard />
+              <ComposedChartCard />
+            </div>
           </div>
-        </>
-      </FilterSidebar>
-    </div>
+
+          <hr className="my-10 border-5 border-gray-20" />
+
+          {/* Tabbed Table Content */}
+          <TabbedTableComponent />
+        </FilterSidebar>
+      </div>
+
+      <USWDSFooter agencyInfo={agencyInfo} contactInfo={contactInfo} navigation={navigation} />
+    </>
   );
 }

@@ -5,8 +5,6 @@ import { Icon } from "@/components/ui/icon";
 import { navItems } from "./data/header-data";
 import { agencyInfo, contactInfo, navigation } from "./data/footer-data";
 
-
-
 export default function HeaderAndFooterPage() {
   return (
     <>
