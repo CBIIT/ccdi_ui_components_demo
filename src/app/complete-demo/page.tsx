@@ -40,6 +40,8 @@ export default function CompleteDemoPage() {
       <Banner />
       <NCIDSNavbar navItems={navItems} />
 
+      <h1 className="sr-only">Complete Demo</h1>
+
       <div className="h-screen">
         <FilterSidebar
           categories={sampleCategories}
