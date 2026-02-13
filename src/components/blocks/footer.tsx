@@ -467,7 +467,7 @@ const USWDSFooter = React.forwardRef<HTMLElement, USWDSFooterProps>(
     navigation = {},
     agencyInfo,
     contactInfo,
-    showNewsletter = false,
+    showNewsletter = true,
     onNewsletterSignup,
     ...props
   }, ref) => {

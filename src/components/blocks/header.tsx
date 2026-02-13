@@ -53,6 +53,27 @@ export default function NCIDSNavbar({
     return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
 
+  // Recalculate dropdown position for full-width
+  useEffect(() => {
+    if (!activeDropdown || !navContainerRef.current) return;
+
+    const updateDropdownPosition = () => {
+      const dropdownEl = dropdownRefs.current[activeDropdown];
+      if (dropdownEl && navContainerRef.current) {
+        const navContainerRect = navContainerRef.current.getBoundingClientRect();
+        // Calculate offset to make dropdown full viewport width
+        const leftOffset = -navContainerRect.left;
+        const rightOffset = -(window.innerWidth - navContainerRect.right);
+        dropdownEl.style.left = `${leftOffset}px`;
+        dropdownEl.style.right = `${rightOffset}px`;
+      }
+    };
+
+    updateDropdownPosition();
+    window.addEventListener("resize", updateDropdownPosition);
+    return () => window.removeEventListener("resize", updateDropdownPosition);
+  }, [activeDropdown]);
+
   // Handle dropdown clicks
   const handleDropdownClick = (itemId: string) => {
     if (isMobile) {
@@ -148,7 +169,6 @@ export default function NCIDSNavbar({
         ref={(el) => {
           navItemRefs.current[item.id] = el;
         }}
-        className="relative"
       >
         {hasSubmenu ? (
           <button
@@ -203,135 +223,132 @@ export default function NCIDSNavbar({
             {item.label}
           </a>
         )}
+      </div>
+    );
+  };
 
-        {/* Desktop Dropdown - Figma Style */}
-        {hasSubmenu && isActive && (
-          <div
-            ref={(el) => {
-              dropdownRefs.current[item.id] = el;
-              if (
-                el &&
-                navContainerRef.current &&
-                navItemRefs.current[item.id]
-              ) {
-                const navItemRect =
-                  navItemRefs.current[item.id]!.getBoundingClientRect();
-                const navContainerRect =
-                  navContainerRef.current.getBoundingClientRect();
-                el.style.left = `${navContainerRect.left - navItemRect.left}px`;
-                el.style.right = `${navItemRect.right - navContainerRect.right}px`;
-                el.style.width = `${navContainerRef.current.offsetWidth}px`;
-              }
-            }}
-            className="fixed left-0 right-0 z-50 bg-cerulean-70 shadow-lg"
-          >
-            <div className="max-w-[87.5rem] mx-auto flex gap-2 px-8 py-8 pb-0 grid grid-cols-4">
-              <div className="flex flex-col col-span-1">
-                <a
-                  href={item.href}
-                  className="text-white text-xl font-semibold hover:underline focus:outline focus:outline-4 focus:outline-blue-40v"
-                >
-                  {item.title || item.label}
-                </a>
-              </div>
-              <div className="flex gap-8 col-span-3 grid grid-flow-col grid-rows-[auto_auto_auto]">
-                <div className="flex flex-col items-start grid grid-cols-3">
-                  {item.submenu?.slice(0, 3).map((subItem) => (
-                    <div className="px-4">
-                      <a
-                        key={subItem.id}
-                        href={subItem.href}
-                        onClick={() => setActiveDropdown(null)}
-                        className="text-white text-xl font-semibold hover:underline focus:outline focus:outline-4 focus:outline-blue-40v"
-                      >
-                        {subItem.label}
-                      </a>
-                      {subItem.hasSubmenu && (
-                        <ul>
-                          {subItem.submenu?.map((subItemChild) => (
-                            <li
-                              key={subItemChild.id}
-                              className="my-2 leading-5"
-                            >
-                              <a
-                                href={subItemChild.href}
-                                className="font-open-sans text-base text-white leading-4 font-light hover:underline focus:outline focus:outline-4 focus:outline-blue-40v tracking-wide"
-                              >
-                                {subItemChild.label}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  ))}
+  const renderDesktopDropdown = (item: NavItem) => {
+    if (!item.hasSubmenu || !item.submenu || activeDropdown !== item.id) {
+      return null;
+    }
+
+    return (
+      <div
+        ref={(el) => {
+          dropdownRefs.current[item.id] = el;
+          if (el && navContainerRef.current) {
+            const navContainerRect = navContainerRef.current.getBoundingClientRect();
+            // Calculate offset to make dropdown full viewport width
+            const leftOffset = -navContainerRect.left;
+            const rightOffset = -(window.innerWidth - navContainerRect.right);
+            el.style.left = `${leftOffset}px`;
+            el.style.right = `${rightOffset}px`;
+          }
+        }}
+        className="absolute top-full z-50 bg-cerulean-70 shadow-lg"
+      >
+        <div className="max-w-[87.5rem] mx-auto flex gap-2 px-8 py-8 grid grid-cols-4">
+          <div className="flex flex-col col-span-1">
+            <a
+              href={item.href}
+              className="text-white text-xl font-semibold hover:underline focus:outline focus:outline-4 focus:outline-blue-40v"
+            >
+              {item.title || item.label}
+            </a>
+          </div>
+          <div className="flex gap-8 col-span-3 grid grid-flow-col grid-rows-[auto_auto_auto]">
+            <div className="flex flex-col items-start grid grid-cols-3">
+              {item.submenu?.slice(0, 3).map((subItem) => (
+                <div key={subItem.id} className="px-4">
+                  <a
+                    href={subItem.href}
+                    onClick={() => setActiveDropdown(null)}
+                    className="text-white text-xl font-semibold hover:underline focus:outline focus:outline-4 focus:outline-blue-40v"
+                  >
+                    {subItem.label}
+                  </a>
+                  {subItem.hasSubmenu && (
+                    <ul>
+                      {subItem.submenu?.map((subItemChild) => (
+                        <li
+                          key={subItemChild.id}
+                          className="my-2 leading-5"
+                        >
+                          <a
+                            href={subItemChild.href}
+                            className="font-open-sans text-base text-white leading-4 font-light hover:underline focus:outline focus:outline-4 focus:outline-blue-40v tracking-wide"
+                          >
+                            {subItemChild.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
-                <div className="flex flex-col items-start grid grid-cols-3">
-                  {item.submenu?.slice(3, 6).map((subItem) => (
-                    <div className="px-4">
-                      <a
-                        key={subItem.id}
-                        href={subItem.href}
-                        onClick={() => setActiveDropdown(null)}
-                        className="text-white text-xl font-semibold hover:underline focus:outline focus:outline-4 focus:outline-blue-40v"
-                      >
-                        {subItem.label}
-                      </a>
-                      {subItem.hasSubmenu && (
-                        <ul>
-                          {subItem.submenu?.map((subItemChild) => (
-                            <li
-                              key={subItemChild.id}
-                              className="my-2 leading-5"
-                            >
-                              <a
-                                href={subItemChild.href}
-                                className="font-open-sans text-base text-white leading-4 font-light hover:underline focus:outline focus:outline-4 focus:outline-blue-40v"
-                              >
-                                {subItemChild.label}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  ))}
+              ))}
+            </div>
+            <div className="flex flex-col items-start grid grid-cols-3">
+              {item.submenu?.slice(3, 6).map((subItem) => (
+                <div key={subItem.id} className="px-4">
+                  <a
+                    href={subItem.href}
+                    onClick={() => setActiveDropdown(null)}
+                    className="text-white text-xl font-semibold hover:underline focus:outline focus:outline-4 focus:outline-blue-40v"
+                  >
+                    {subItem.label}
+                  </a>
+                  {subItem.hasSubmenu && (
+                    <ul>
+                      {subItem.submenu?.map((subItemChild) => (
+                        <li
+                          key={subItemChild.id}
+                          className="my-2 leading-5"
+                        >
+                          <a
+                            href={subItemChild.href}
+                            className="font-open-sans text-base text-white leading-4 font-light hover:underline focus:outline focus:outline-4 focus:outline-blue-40v"
+                          >
+                            {subItemChild.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
-                <div className="flex flex-col items-start grid grid-cols-3">
-                  {item.submenu?.slice(6).map((subItem) => (
-                    <div className="px-4">
-                      <a
-                        key={subItem.id}
-                        href={subItem.href}
-                        onClick={() => setActiveDropdown(null)}
-                        className="text-white text-xl font-semibold hover:underline focus:outline focus:outline-4 focus:outline-blue-40v"
-                      >
-                        {subItem.label}
-                      </a>
-                      {subItem.hasSubmenu && (
-                        <ul>
-                          {subItem.submenu?.map((subItemChild) => (
-                            <li
-                              key={subItemChild.id}
-                              className="my-2 leading-5"
-                            >
-                              <a
-                                href={subItemChild.href}
-                                className="font-open-sans text-base text-white leading-4 font-light hover:underline focus:outline focus:outline-4 focus:outline-blue-40v"
-                              >
-                                {subItemChild.label}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  ))}
+              ))}
+            </div>
+            <div className="flex flex-col items-start grid grid-cols-3">
+              {item.submenu?.slice(6).map((subItem) => (
+                <div key={subItem.id} className="px-4">
+                  <a
+                    href={subItem.href}
+                    onClick={() => setActiveDropdown(null)}
+                    className="text-white text-xl font-semibold hover:underline focus:outline focus:outline-4 focus:outline-blue-40v"
+                  >
+                    {subItem.label}
+                  </a>
+                  {subItem.hasSubmenu && (
+                    <ul>
+                      {subItem.submenu?.map((subItemChild) => (
+                        <li
+                          key={subItemChild.id}
+                          className="my-2 leading-5"
+                        >
+                          <a
+                            href={subItemChild.href}
+                            className="font-open-sans text-base text-white leading-4 font-light hover:underline focus:outline focus:outline-4 focus:outline-blue-40v"
+                          >
+                            {subItemChild.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
-              </div>
+              ))}
             </div>
           </div>
-        )}
+        </div>
       </div>
     );
   };
@@ -438,6 +455,18 @@ export default function NCIDSNavbar({
             {navItems.map((item) => renderDesktopNavItem(item))}
           </div>
         </div>
+        {/* Desktop Dropdown - Full Width */}
+        {activeDropdown && (
+          <>
+            {navItems
+              .filter((item) => item.id === activeDropdown)
+              .map((item) => (
+                <React.Fragment key={item.id}>
+                  {renderDesktopDropdown(item)}
+                </React.Fragment>
+              ))}
+          </>
+        )}
       </div>
 
       {/* Mobile Navigation Overlay - Figma Style */}
