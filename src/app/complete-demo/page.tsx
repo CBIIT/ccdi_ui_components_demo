@@ -52,7 +52,7 @@ export default function CompleteDemoPage() {
         aria-label="Program statistics"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-stretch justify-center gap-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 icon: "topic" as const,
@@ -74,31 +74,56 @@ export default function CompleteDemoPage() {
                 value: 1238181,
                 label: "Files",
               },
-            ].map((stat, index) => (
-              <React.Fragment key={stat.label}>
-                {index > 0 && (
-                  <Separator
-                    orientation="vertical"
-                    className="h-auto self-center border-teal-70/50 min-h-[3rem]"
-                  />
-                )}
-                <div className="flex flex-1 min-w-0 basis-0 items-center justify-center gap-4 px-6 py-2">
-                  <Icon
-                    icon={stat.icon}
-                    size="lg"
-                    className="h-10 w-10 shrink-0 text-teal-80"
-                  />
-                  <div className="flex flex-col items-start">
-                    <span className="text-2xl font-bold tabular-nums text-teal-70">
-                      {stat.value.toLocaleString()}
-                    </span>
-                    <Label className="text-xs font-normal uppercase tracking-wide text-teal-80 cursor-default">
-                      {stat.label}
-                    </Label>
+            ].map((stat, index) => {
+              const showHorizontalBelowMobileOnly = index < 3 && index !== 1;
+              const showHorizontalBelowSm = index === 1;
+              const showVerticalRightLgOnly = index === 1;
+
+              return (
+                <div
+                  key={stat.label}
+                  className="flex flex-col min-w-0"
+                >
+                  <div className="flex flex-1 min-w-0 items-center justify-center gap-3 px-4 py-4 sm:gap-4 sm:px-5 sm:py-4 lg:py-3">
+                    <div className="flex flex-1 min-w-0 items-center justify-center gap-3 sm:gap-4">
+                      <Icon
+                        icon={stat.icon}
+                        size="lg"
+                        className="h-8 w-8 shrink-0 text-teal-80 sm:h-9 sm:w-9 lg:h-10 lg:w-10"
+                      />
+                      <div className="flex flex-col items-start">
+                        <span className="text-xl font-bold tabular-nums text-teal-70 sm:text-2xl">
+                          {stat.value.toLocaleString()}
+                        </span>
+                        <Label className="text-xs font-normal uppercase tracking-wide text-teal-80 cursor-default">
+                          {stat.label}
+                        </Label>
+                      </div>
+                    </div>
+                    {index < 3 && (
+                      <Separator
+                        orientation="vertical"
+                        className={`h-auto min-h-[3rem] self-center border-teal-70/50 ${
+                          showVerticalRightLgOnly ? "hidden lg:flex" : "hidden sm:flex"
+                        }`}
+                      />
+                    )}
                   </div>
+                  {index < 3 && (
+                    <Separator
+                      orientation="horizontal"
+                      className={`w-full shrink-0 border-teal-70/50 ${
+                        showHorizontalBelowMobileOnly
+                          ? "flex lg:hidden"
+                          : showHorizontalBelowSm
+                            ? "flex lg:hidden"
+                            : "hidden"
+                      }`}
+                    />
+                  )}
                 </div>
-              </React.Fragment>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
