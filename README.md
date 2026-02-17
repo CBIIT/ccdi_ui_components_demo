@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CCDI UI Components Demo
+
+A **Next.js 16** demo app that showcases reusable UI building blocks for CCDI (Childhood Cancer Data Initiative) products. It uses basic UI components or blocks in the [ccdi-ui-components](https://github.com/CBIIT/ccdi-ui-components) repo.
+
+**Stack:** React 19, TypeScript, Tailwind CSS, Radix UI, Recharts.
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3006](http://localhost:3006). The home page links to each demo section.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Demo Sections
 
-## Learn More
+| Route | Description |
+|-------|-------------|
+| **Home** | Landing page with links to every demo section. |
+| **Header and Footer** (`/header-and-footer`) | NCI-style navbar (logo, main nav with dropdowns and multi-level submenus, responsive mobile/tablet menu) and USWDS-style footer (agency info, link groups, contact). Configurable via `header-data.ts` and `footer-data.ts`. |
+| **Filter Sidebar** (`/sidebar`) | Collapsible filter categories (accordions), facet checkboxes, optional search, numeric range filter (min/max). Active Filters banner with “Clear all,” wired to the same state. |
+| **Charts** (`/charts`) | Dashboard-style chart cards (Recharts): Pie, Line, Bar, Area, Horizontal Bar, and Composed (line + bar). Shared theming and card structure. |
+| **Tabbed Table** (`/tabbed-table`) | Tabs: Participants, Studies, Samples, Files. Each tab has its own DataTable with sorting, pagination (e.g. 50/100 per page), column visibility, and download dropdown. |
+| **Complete Demo** (`/complete-demo`) | Full experience: banner → header → program stats strip → main content (filter sidebar, Active Filters, charts, tabbed table) → footer. Used to validate layout, responsiveness, and interaction. |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Repo Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **`src/app`** — App Router pages and route-specific data (e.g. `header-and-footer/data/`, `charts/data/`). Each major feature has its own route so you can try it in isolation or in the Complete Demo.
+- **`src/components`**
+  - **`blocks/`** — Page-level pieces: header, footer, filter sidebar, active-filters banner, tabbed-table component.
+  - **`ui/`** — Primitives and controls: buttons, search, banner, icons, tabs, checkboxes, accordions, selects, dropdowns, data-table helpers, etc.
+  - **`charts/`** — Shared chart wrapper.
+  - Supporting components: `data-table.tsx` (generic table with pagination and column visibility), `back-to-homepage.tsx`.
+- **`src/lib`** — Shared utilities (e.g. `utils.ts`).
 
-## Deploy on Vercel
+Routes and page-specific data live under `app`; reusable components and blocks live under `components`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start dev server on port **3006**. |
+| `npm run build` | Production build. |
+| `npm run start` | Start production server. |
+| `npm run lint` | Run ESLint. |
