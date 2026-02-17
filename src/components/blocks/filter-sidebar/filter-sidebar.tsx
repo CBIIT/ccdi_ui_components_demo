@@ -207,7 +207,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
   return (
     <div className={cn("flex h-screen bg-gray-10", className)}>
       {/* Left rail */}
-      <aside className="w-80 bg-teal-60 text-white flex flex-col">
+      <aside className="w-80 bg-teal-60 text-white flex flex-col border-r-1 border-gray-90">
         <div className="p-4 space-y-3">
           <div className="flex items-center gap-2">
             <Button variant="outline-inverse" size="icon" aria-label="Explore the CCDI User Guide">
