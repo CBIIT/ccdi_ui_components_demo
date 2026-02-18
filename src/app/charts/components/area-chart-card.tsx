@@ -18,7 +18,7 @@ export function AreaChartCard() {
           <h2 className="font-semibold font-poppins text-xl">
             Area Chart - Cumulative Enrollment
           </h2>
-          <p className="text-sm font-open-sans text-muted-foreground">
+          <p className="text-base font-open-sans text-muted-foreground">
             Total participants over study weeks
           </p>
         </div>
@@ -43,7 +43,7 @@ export function AreaChartCard() {
           </AreaChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
+      <CardFooter className="flex-col items-start gap-2 text-base">
         <div className="text-muted-foreground font-open-sans leading-none">
           Monitor cumulative enrollment over the study period
         </div>
