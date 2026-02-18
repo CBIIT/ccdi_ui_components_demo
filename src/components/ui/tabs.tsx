@@ -66,7 +66,7 @@ const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
         data-slot="tabs-list"
         role="tablist"
         className={cn(
-          "inline-flex w-fit items-center justify-center gap-0.5 bg-white border-b-4 border-gray-30",
+          "inline-flex w-full items-center justify-start gap-0.5 bg-white border-b-4 border-gray-30",
           className
         )}
         {...props}

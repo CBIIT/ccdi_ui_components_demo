@@ -15,10 +15,10 @@ export function AreaChartCard() {
     <Card className="flex flex-col max-w-xl">
       <CardHeader className="flex-row items-start space-y-0 pb-0">
         <div className="grid gap-1">
-          <h2 className="font-bold font-merriweather text-lg">
+          <h2 className="font-semibold font-poppins text-xl">
             Area Chart - Cumulative Enrollment
           </h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-base font-open-sans text-muted-foreground">
             Total participants over study weeks
           </p>
         </div>
@@ -43,8 +43,8 @@ export function AreaChartCard() {
           </AreaChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="text-muted-foreground leading-none">
+      <CardFooter className="flex-col items-start gap-2 text-base">
+        <div className="text-muted-foreground font-open-sans leading-none">
           Monitor cumulative enrollment over the study period
         </div>
       </CardFooter>
