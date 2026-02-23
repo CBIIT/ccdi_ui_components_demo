@@ -402,13 +402,26 @@ export default function NCIDSNavbar({
             </Button>
           </div>
           <div className="flex-1 min-w-0">
-            <Search
-              iconOnly={isMobile ? true : false}
-              label="Search Data Sharing Hub"
-              buttonText="Search"
-              size={isMobile ? "large" : "default"}
-              onSearch={(value) => console.log("Search:", value)}
-            />
+            {/* Mobile Search - visible on mobile, hidden on desktop */}
+            <div className="lg:hidden">
+              <Search
+                iconOnly={true}
+                label="Search Data Sharing Hub"
+                buttonText="Search"
+                size="large"
+                onSearch={(value) => console.log("Search:", value)}
+              />
+            </div>
+            {/* Desktop Search - hidden on mobile, visible on desktop */}
+            <div className="hidden lg:block">
+              <Search
+                iconOnly={false}
+                label="Search Data Sharing Hub"
+                buttonText="Search"
+                size="default"
+                onSearch={(value) => console.log("Search:", value)}
+              />
+            </div>
           </div>
         </div>
       </div>
