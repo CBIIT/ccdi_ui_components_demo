@@ -386,9 +386,9 @@ export default function NCIDSNavbar({
         </div>
 
         {/* Search Bar - Using USWDS Search Component */}
-        <div className="flex flex-row items-center gap-6 w-full justify-start lg:justify-end">
+        <div className="flex flex-row items-center gap-6 sm: flex-1 lg:flex-none lg:w-auto justify-start lg:justify-end min-w-0">
           {/* Mobile menu button - Using USWDS Button */}
-          <div className="flex items-center lg:hidden">
+          <div className="flex items-center lg:hidden flex-shrink-0">
             <Button
               onClick={() => {
                 setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -401,13 +401,28 @@ export default function NCIDSNavbar({
               Menu
             </Button>
           </div>
-          <Search
-            iconOnly={isMobile ? true : false}
-            label="Search Data Sharing Hub"
-            buttonText="Search"
-            size={isMobile ? "large" : "default"}
-            onSearch={(value) => console.log("Search:", value)}
-          />
+          <div className="flex-1 min-w-0">
+            {/* Mobile Search - visible on mobile, hidden on desktop */}
+            <div className="lg:hidden">
+              <Search
+                iconOnly={true}
+                label="Search Data Sharing Hub"
+                buttonText="Search"
+                size="large"
+                onSearch={(value) => console.log("Search:", value)}
+              />
+            </div>
+            {/* Desktop Search - hidden on mobile, visible on desktop */}
+            <div className="hidden lg:block">
+              <Search
+                iconOnly={false}
+                label="Search Data Sharing Hub"
+                buttonText="Search"
+                size="default"
+                onSearch={(value) => console.log("Search:", value)}
+              />
+            </div>
+          </div>
         </div>
       </div>
 

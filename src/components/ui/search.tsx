@@ -8,7 +8,7 @@ import { Icon } from "./icon";
 const searchInputVariants = cva(
   cn(
     // Layout classes
-    "w-full min-w-75 lg:min-w-55 border border-r-0 border-gray-60",
+    "w-full min-w-0 max-w-[300px] lg:max-w-none border border-r-0 border-gray-60",
     // Font classes
     "font-open-sans text-gray-90 placeholder:text-gray-50",
     // Focus states
